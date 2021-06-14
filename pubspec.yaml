@@ -1,0 +1,59 @@
+name: fluttour
+description: A minor Flutter base_source
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  meta: ^1.3.0
+  intl: ^0.17.0
+  flutter_screenutil: ^3.2.0
+  provider: ^5.0.0
+  localstorage: ^3.0.6
+  graphql_flutter: ^4.0.0-beta
+  http: ^0.13.3
+  avoid_keyboard: ^0.3.0
+
+flutter_intl:
+  enabled: true
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/app/icons/
+    - assets/app/fonts/
+
+  fonts:
+  - family: MontserratAlternates
+    fonts:
+      - asset: assets/app/fonts/Montserrat_Alternates/MontserratAlternates-Thin.ttf
+        weight: 100
+      - asset: assets/app/fonts/Montserrat_Alternates/MontserratAlternates-ThinItalic.ttf
+        style: italic
+        weight: 100
+      - asset: assets/app/fonts/Montserrat_Alternates/MontserratAlternates-Light.ttf
+        weight: 300
+      - asset: assets/app/fonts/Montserrat_Alternates/MontserratAlternates-LightItalic.ttf
+        style: italic
+        weight: 300
+      - asset: assets/app/fonts/Montserrat_Alternates/MontserratAlternates-Regular.ttf
+        weight: 400
+      - asset: assets/app/fonts/Montserrat_Alternates/MontserratAlternates-Bold.ttf
+        weight: 700
+      - asset: assets/app/fonts/Montserrat_Alternates/MontserratAlternates-BoldItalic.ttf
+        style: italic
+        weight: 700
+      - asset: assets/app/fonts/Montserrat_Alternates/MontserratAlternates-Black.ttf
+        weight: 900
+      - asset: assets/app/fonts/Montserrat_Alternates/MontserratAlternates-BlackItalic.ttf
+        style: italic
+        weight: 900

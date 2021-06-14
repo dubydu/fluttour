@@ -1,0 +1,44 @@
+{
+  "hello": "Hello",
+  "@hello": {
+    "description": "Hello someone",
+    "type": "text",
+    "placeholders": {}
+  },
+  "app_title": "FlutterxGraphQL",
+  "@app_title": {
+    "description": "Global",
+    "type": "text",
+    "placeholders": {}
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Home Page",
+    "type": "text",
+    "placeholders": {}
+  },
+  "signup": "Sign Up",
+  "@signup": {
+    "description": "Signup Page",
+    "type": "text",
+    "placeholders": {}
+  },
+  "email": "Email",
+  "@email": {
+    "description": "Signup Page",
+    "type": "text",
+    "placeholders": {}
+  },
+  "password": "Password",
+  "@password": {
+    "description": "Signup Page",
+    "type": "text",
+    "placeholders": {}
+  },
+  "character": "User Name",
+  "@character": {
+    "description": "Signup Page",
+    "type": "text",
+    "placeholders": {}
+  }
+}
