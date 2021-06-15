@@ -59,6 +59,8 @@ class _HomePageState extends State<HomePage> with DynamicSize, HeaderDelegate {
                               return context.navigator()?.pushNamed(AppRoute.routeCollectionGrid);
                             case Tutorial.fetching:
                               return context.navigator()?.pushNamed(AppRoute.routeFetchData);
+                            case Tutorial.mutations:
+                              return context.navigator()?.pushNamed(AppRoute.routeDataMutations);
                             default:
                               return null;
                           }

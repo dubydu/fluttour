@@ -6,10 +6,10 @@ class Credential {
   // PRIVATE PROPERTIES
   // -----------------
   // Local storage
-  static final Credential _singleton = Credential._internal();
+  static final Credential singleton = Credential._internal();
 
   factory Credential() {
-    return _singleton;
+    return singleton;
   }
 
   Credential._internal();

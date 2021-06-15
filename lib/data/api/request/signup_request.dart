@@ -4,7 +4,7 @@ import 'package:fluttour/domain/models/character_model.dart';
 class SignupRequest extends GraphQLAPIClient {
   Future<CharacterModel?> signup(CharacterModel request) async {
     /// Query
-    String fetchTickets = """
+    String mutationUser = """
       mutation {
           createCharacter(data: {
             name: "${request.name}"
@@ -15,9 +15,9 @@ class SignupRequest extends GraphQLAPIClient {
           }
         }
     """;
-    final result = await this.execute(fetchTickets);
+    final result = await this.execute(mutationUser);
     if (result.hasException) {
-      print("Sign up isError ${result.exception.graphqlErrors}");
+      print("Error: failed to mutation user profile => ${result.exception.graphqlErrors}");
       return null;
     }
     final Map<String, dynamic> data = result.data;

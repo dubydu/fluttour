@@ -5,6 +5,12 @@
     "type": "text",
     "placeholders": {}
   },
+  "flut_tour": "Fluttour",
+  "@flut_tour": {
+    "description": "Global",
+    "type": "text",
+    "placeholders": {}
+  },
   "app_title": "FlutterxGraphQL",
   "@app_title": {
     "description": "Global",

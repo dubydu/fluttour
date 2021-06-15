@@ -1,4 +1,3 @@
-[![Build Status](https://github.com/dart-lang/usage/workflows/Dart/badge.svg)](https://github.com/dart-lang/usage/actions)
 [![Build Status](https://app.bitrise.io/app/38259925b6bfe2bd/status.svg?token=7Q0InN8BEzmzxC0GPoddUg&branch=master)](https://app.bitrise.io/app/38259925b6bfe2bd)
 
 A minor Flutter base-source
@@ -22,15 +21,7 @@ A minor Flutter base-source
 * Create a new `A_widget`.
 * Create a new `A_Provider` class that `extends` from `ChangeNotifierSafety`.
 * Define the `A_widget's route` in [`app_route.dart`](https://github.com/dubydu/fluttour/blob/master/lib/app_define/app_route.dart).
-* Exposing a new Provider object instance in [`myMain()`](https://github.com/dubydu/fluttour/blob/master/lib/my_app.dart) function.
-
-#### Work with GraphQL
-There is plenty of supported server and client [`libraries`](https://graphql.org/code/#services) for GraphQL. In scope of this project, I am using [`GraphCMS`](https://graphcms.com/).
-* First of all, GraphQLClient requires both a link, and a token to be initialized.
-* Then, create a new request class (1) that `extends` from [`GraphQLAPIClient`](https://github.com/dubydu/fluttour/blob/master/lib/data/api/api_client.dart) class.
-* Write a `Future` function inside the request class (1), this function must return the value.
-* Inside the `A_Provider` class, write a `Future` function, the main responsibility of this function is call the `Future` function inside the request class (1), then handle the Response (parse data, request status code...).
-* About GraphQL APIs such as `Query`, `Mutation`,... you can reference this [`document`](https://graphcms.com/docs/content-api/queries)
+* Exposing a new A_Provider object in [`myMain()`](https://github.com/dubydu/fluttour/blob/master/lib/my_app.dart) function.
 
 #### How to add assets
 
@@ -55,6 +46,15 @@ There is plenty of supported server and client [`libraries`](https://graphql.org
       # add any styles here follow above rule
 ```
 
+### [Fall in Luv with GraphQL](work_with_graphql)
+There is plenty of supported server and client [`libraries`](https://graphql.org/code/#services) for GraphQL. In scope of this project, I am using the [`GraphCMS`](https://graphcms.com/).
+* First of all, GraphQLClient requires both a link and a token to be initialized.
+* Then, create a new request class (1) that `extends` from [`GraphQLAPIClient`](https://github.com/dubydu/fluttour/blob/master/lib/data/api/api_client.dart) class.
+* Exposing this class (1) object in [`myMain()`](https://github.com/dubydu/fluttour/blob/master/lib/my_app.dart) function.
+* Write a `Future` function inside the request class (1), this function must return the value.
+* Inside the `A_Provider` class, write a `Future` function, the main responsibility of this function is call the `Future` function inside the request class (1), then handle the Response (parse data, request status code...).
+* About GraphQL APIs such as `Query`, `Mutation`,... you can reference this [`document`](https://graphcms.com/docs/content-api/queries)
+
 ### [Local Storage](usage)
 *  [localstorage](https://pub.dev/packages/localstorage): Simple json file-based storage for flutter.
 #### How to use
@@ -72,3 +72,12 @@ There is plenty of supported server and client [`libraries`](https://graphql.org
         storage.setItem('custom_key');
       }
   }
+
+### [Pitfalls](pitfalls)
+- Make sure `flutter pub get` before you run the app.
+
+### [WIP](wip)
+
+---
+
+> This repository took inspiration from [`nhancv/nft`](https://github.com/nhancv/nft), I really appreciate it.

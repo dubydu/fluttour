@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "app_title": MessageLookupByLibrary.simpleMessage("FlutterxGraphQL"),
         "character": MessageLookupByLibrary.simpleMessage("User Name"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "flut_tour": MessageLookupByLibrary.simpleMessage("Fluttour"),
         "hello": MessageLookupByLibrary.simpleMessage("Hello"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),

@@ -11,6 +11,7 @@ import 'package:fluttour/utils/widgets/w_header.dart';
 import 'package:fluttour/utils/widgets/w_primary_button.dart';
 import 'package:provider/provider.dart';
 import 'package:fluttour/app_define/app_route.dart';
+import 'package:flutter/cupertino.dart';
 
 class PSignUp extends StatefulWidget {
   @override
@@ -123,12 +124,28 @@ class _PSignUpState extends State<PSignUp> with DynamicSize, SignUpDelegate {
   }
 
   @override
-  void didSignInFailed() {
-
+  Future<void> didSignInFailed(String mgs) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Text('<${S.of(context).flut_tour}> $mgs'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () async {
+                context.navigator()?.pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
-  void didSignInSuccess() {
+  Future<void> didSignInSuccess() async {
     context.navigator()?.pushNamed(AppRoute.routeHome);
   }
 }

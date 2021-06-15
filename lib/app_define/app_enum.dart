@@ -16,6 +16,7 @@ extension CredentialKeyExtension on CredentialKey {
 
 enum Tutorial {
   fetching,
+  mutations,
   layoutState,
   gridView,
 }
@@ -29,6 +30,8 @@ extension TutorialExtension on Tutorial {
         return 'Grid View';
       case Tutorial.fetching:
         return 'Fetching';
+      case Tutorial.mutations:
+        return 'Mutations';
       default:
         return '';
     }

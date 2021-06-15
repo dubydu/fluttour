@@ -1,4 +1,4 @@
 mixin SignUpDelegate {
-  void didSignInSuccess();
-  void didSignInFailed();
+  Future<void> didSignInSuccess();
+  Future<void> didSignInFailed(String mgs);
 }

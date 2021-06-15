@@ -1,3 +1,4 @@
+import 'package:fluttour/app_define/app_credential.dart';
 import 'package:fluttour/data/api/request/signup_request.dart';
 import 'package:fluttour/domain/models/character_model.dart';
 import 'package:fluttour/pages/signup/signup_delegate.dart';
@@ -78,12 +79,14 @@ class SignupProvider extends ChangeNotifierSafety {
         email: this.emailText,
         password: this.password);
     CharacterModel? result = await _signupRequest.signup(request);
-    if (result != null) {
+    if (result != null && result.id != null) {
+      Credential.singleton.saveToken(result.id!);
       this.isSignUpButtonLoading = false;
-      this.delegate?.didSignInSuccess();
+      await this.delegate?.didSignInSuccess();
     } else {
-      this.delegate?.didSignInFailed();
+      await this.delegate?.didSignInFailed("Sign up failed");
     }
+    isSignUpButtonLoading = false;
   }
 
   @override

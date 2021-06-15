@@ -60,6 +60,16 @@ class S {
     );
   }
 
+  /// `Fluttour`
+  String get flut_tour {
+    return Intl.message(
+      'Fluttour',
+      name: 'flut_tour',
+      desc: 'Global',
+      args: [],
+    );
+  }
+
   /// `FlutterxGraphQL`
   String get app_title {
     return Intl.message(
