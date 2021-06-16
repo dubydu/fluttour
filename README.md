@@ -33,7 +33,7 @@ A minor Flutter base-source
 [2. Font]()
 
 * Add custom fonts into assets/app/font
-* Inside the [`pubspec.yaml`](https://github.com/dubydu/fluttour/blob/develop/flutter_2.0.x/pubspec.yaml) file, add these scripts under the `assets`. 
+* Inside the [`pubspec.yaml`](https://github.com/dubydu/fluttour/blob/develop/pubspec.yaml) file, add these scripts under the `assets`. 
 ```
   fonts:
   - family: Font name
@@ -53,12 +53,12 @@ There is plenty of supported server and client [`libraries`](https://graphql.org
 * Exposing this class (1) object in [`myMain()`](https://github.com/dubydu/fluttour/blob/master/lib/my_app.dart) function.
 * Write a `Future` function inside the request class (1), this function must return the value.
 * Inside the `A_Provider` class, write a `Future` function, the main responsibility of this function is call the `Future` function inside the request class (1), then handle the Response (parse data, request status code...).
-* About GraphQL APIs such as `Query`, `Mutation`,... you can reference this [`document`](https://graphcms.com/docs/content-api/queries)
+* About GraphQL APIs, such as `Query`, `Mutation`,... you can reference this [`document`](https://graphcms.com/docs/content-api/queries)
 
 ### [Local Storage](usage)
 *  [localstorage](https://pub.dev/packages/localstorage): Simple json file-based storage for flutter.
 #### How to use
-* Inside the [Credential](https://github.com/dubydu/fluttour/blob/master/lib/app_define/app_credential.dart) class, create `set { }` `get { }` functions that you want to set and get the target object such as `String, int, double...`
+* This recipe cover how to save and get the object from local disk using [localstorage](https://pub.dev/packages/localstorage).
 * ```e.g
   Future<String> getToken() async {
     if (await storage.ready == true) {
@@ -72,6 +72,8 @@ There is plenty of supported server and client [`libraries`](https://graphql.org
         storage.setItem('custom_key');
       }
   }
+  ```
+* Inside the [`Credential`](https://github.com/dubydu/fluttour/blob/master/lib/app_define/app_credential.dart) class, create `set { }` `get { }` functions that you want to set and get the target object.
 
 ### [Pitfalls](pitfalls)
 - Make sure `flutter pub get` before you run the app.
