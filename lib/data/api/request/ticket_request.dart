@@ -13,7 +13,7 @@ class TicketRequest extends GraphQLAPIClient {
     """;
     final result = await this.execute(fetchTickets);
     if (result.hasException) {
-      print("Error: failed to fetch ticket list => ${result.exception.graphqlErrors}");
+      handleException(result);
       return [];
     }
     final Map<String, dynamic> data = result.data;

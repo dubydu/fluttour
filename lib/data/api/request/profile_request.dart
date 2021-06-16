@@ -14,7 +14,7 @@ class ProfileRequest extends GraphQLAPIClient {
     """;
     final result = await this.execute(fetchProfile);
     if (result.hasException) {
-      print("Error: failed to fetch user profile => ${result.exception.graphqlErrors}");
+      handleException(result);
       return null;
     }
     final Map<String, dynamic> data = result.data;
@@ -38,11 +38,10 @@ class ProfileRequest extends GraphQLAPIClient {
     """;
     final result = await this.execute(updateProfile);
     if (result.hasException) {
-      print("Error: failed to fetch user profile => ${result.exception.graphqlErrors}");
+      handleException(result);
       return null;
     }
     final Map<String, dynamic> data = result.data;
-    print("$data");
     Map<String, dynamic> characterJSON = data["updateCharacter"];
     CharacterModel character = CharacterModel.fromJson(characterJSON);
     return character;

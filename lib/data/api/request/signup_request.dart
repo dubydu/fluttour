@@ -17,7 +17,7 @@ class SignupRequest extends GraphQLAPIClient {
     """;
     final result = await this.execute(mutationCharacter);
     if (result.hasException) {
-      print("Error: failed to mutation user profile => ${result.exception.graphqlErrors}");
+      handleException(result);
       return null;
     }
     final Map<String, dynamic> data = result.data;

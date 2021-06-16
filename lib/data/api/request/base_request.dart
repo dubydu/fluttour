@@ -15,7 +15,7 @@ class BaseRequest extends GraphQLAPIClient {
     """;
     final result = await this.execute(publishCharacter);
     if (result.hasException) {
-      print("Error: failed to publish user profile => ${result.exception.graphqlErrors}");
+      handleException(result);
       return;
     }
   }
