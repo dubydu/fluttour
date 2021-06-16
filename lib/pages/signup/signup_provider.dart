@@ -1,4 +1,5 @@
 import 'package:fluttour/app_define/app_credential.dart';
+import 'package:fluttour/data/api/request/base_request.dart';
 import 'package:fluttour/data/api/request/signup_request.dart';
 import 'package:fluttour/domain/models/character_model.dart';
 import 'package:fluttour/pages/signup/signup_delegate.dart';
@@ -6,8 +7,9 @@ import 'package:fluttour/utils/other/notifier_safety.dart';
 
 class SignupProvider extends ChangeNotifierSafety {
 
-  SignupProvider(this._signupRequest);
+  SignupProvider(this._baseRequest, this._signupRequest);
 
+  late BaseRequest _baseRequest;
   late SignupRequest _signupRequest;
 
   /// Delegate
@@ -16,7 +18,6 @@ class SignupProvider extends ChangeNotifierSafety {
   /// Password Obscure State
   bool _passwordObscureTextState = true;
   bool get passwordObscureTextState => _passwordObscureTextState;
-
   set passwordObscureTextState(bool value) {
     _passwordObscureTextState = value;
     notifyListeners();
@@ -25,7 +26,6 @@ class SignupProvider extends ChangeNotifierSafety {
   /// Signup Button State
   bool _isSignUpButtonEnable = false;
   bool get isSignUpButtonEnable => _isSignUpButtonEnable;
-
   set isSignUpButtonEnable(bool value) {
     _isSignUpButtonEnable = value;
     notifyListeners();
@@ -34,7 +34,6 @@ class SignupProvider extends ChangeNotifierSafety {
   /// Signup stuff
   String? _emailText;
   String? get emailText => _emailText;
-
   set emailText(String? value) {
     _emailText = value;
     validateSignUpStuff();
@@ -42,7 +41,6 @@ class SignupProvider extends ChangeNotifierSafety {
 
   String? _character;
   String? get character => _character;
-
   set character(String? value) {
     _character = value;
     validateSignUpStuff();
@@ -50,16 +48,13 @@ class SignupProvider extends ChangeNotifierSafety {
 
   String? _password;
   String? get password => _password;
-
   set password(String? value) {
     _password = value;
     validateSignUpStuff();
   }
 
   bool _isSignUpButtonLoading = false;
-
   bool get isSignUpButtonLoading => _isSignUpButtonLoading;
-
   set isSignUpButtonLoading(bool value) {
     _isSignUpButtonLoading = value;
     notifyListeners();
@@ -83,6 +78,7 @@ class SignupProvider extends ChangeNotifierSafety {
       Credential.singleton.saveToken(result.id!);
       this.isSignUpButtonLoading = false;
       await this.delegate?.didSignInSuccess();
+      await this._baseRequest.publishCharacter(id: result.id!);
     } else {
       await this.delegate?.didSignInFailed("Sign up failed");
     }

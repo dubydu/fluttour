@@ -146,6 +146,6 @@ class _PSignUpState extends State<PSignUp> with DynamicSize, SignUpDelegate {
 
   @override
   Future<void> didSignInSuccess() async {
-    context.navigator()?.pushNamed(AppRoute.routeHome);
+    context.navigator()?.pushNamedAndRemoveUntil(AppRoute.routeHome, (route) => false);
   }
 }

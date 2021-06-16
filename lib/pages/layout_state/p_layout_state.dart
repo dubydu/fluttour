@@ -55,13 +55,13 @@ class _PLayoutStateState extends State<PLayoutState> {
                         margin: EdgeInsets.only(left: 34.W, right: 34.W),
                         child: Column(
                           children: [
-                            WPrimaryButton(title: 'Font Side', isSelected: isFrontSideSelected, onPress: () {
+                            WPrimaryButton(title: 'Font Side', isSelected: true, onPress: () async {
                               provider.identitySideSelected = Identity.front;
-                            }),
+                            }, isLoading: false,),
                             SizedBox(height: 30.H,),
-                            WPrimaryButton(title: 'Back Side', isSelected: !isFrontSideSelected, onPress: () {
+                            WPrimaryButton(title: 'Back Side', isSelected: true, onPress: () async {
                               provider.identitySideSelected = Identity.back;
-                            }),
+                            }, isLoading: false),
                           ],
                         ),
                       )

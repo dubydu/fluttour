@@ -3,6 +3,7 @@ import 'package:fluttour/pages/collection_grid/p_collection_grid.dart';
 import 'package:fluttour/pages/home/p_home.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttour/pages/layout_state/p_layout_state.dart';
+import 'package:fluttour/pages/profile/edit_profile/p_edit_profile.dart';
 import 'package:fluttour/pages/profile/p_profile.dart';
 import 'package:fluttour/pages/signup/p_signup.dart';
 import 'package:fluttour/pages/tickets/p_tickets.dart';
@@ -26,6 +27,7 @@ class AppRoute {
   static const String routeCollectionGrid = '/collection_grid';
   static const String routeFetchData = '/fetch_data';
   static const String routeDataMutations = '/data_mutations';
+  static const String routeEditProfile = '/edit_profile';
   ///#endregion
 
   /// App route observer
@@ -60,6 +62,12 @@ class AppRoute {
           settings: settings,
           builder: (_) => PProfile()
         );
+      case routeEditProfile:
+        return MaterialPageRoute<dynamic>(
+          settings: settings,
+          builder: (_) => PEditProfile()
+        );
+      case routeSignup:
       case routeRoot:
         return MaterialPageRoute<dynamic>(
           settings: settings,

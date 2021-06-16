@@ -31,4 +31,10 @@ class Credential {
       storage.setItem(CredentialKey.token.getKey(), value);
     }
   }
+
+  Future<void> clearToken() async {
+    if (await storage.ready == true) {
+      await storage.deleteItem(CredentialKey.token.getKey());
+    }
+  }
 }

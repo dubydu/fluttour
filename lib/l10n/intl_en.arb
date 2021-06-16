@@ -46,5 +46,11 @@
     "description": "Signup Page",
     "type": "text",
     "placeholders": {}
+  },
+  "edit_profile": "Edit Profile",
+  "@edit_profile": {
+    "description": "Edit Profile Page",
+    "type": "text",
+    "placeholders": {}
   }
 }

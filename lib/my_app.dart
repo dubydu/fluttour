@@ -1,12 +1,14 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fluttour/app_define/app_credential.dart';
+import 'package:fluttour/data/api/request/base_request.dart';
 import 'package:fluttour/data/api/request/profile_request.dart';
 import 'package:fluttour/data/api/request/signup_request.dart';
 import 'package:fluttour/generated/l10n.dart';
 import 'package:fluttour/pages/collection_grid/collection_grid_provider.dart';
 import 'package:fluttour/pages/home/home_provider.dart';
 import 'package:fluttour/pages/layout_state/layout_state_provider.dart';
+import 'package:fluttour/pages/profile/edit_profile/edit_profile_provider.dart';
 import 'package:fluttour/pages/profile/profile_provider.dart';
 import 'package:fluttour/pages/signup/signup_provider.dart';
 import 'package:fluttour/pages/tickets/tickets_provider.dart';
@@ -79,6 +81,9 @@ Future<void> myMain() async {
             Provider<AppRoute>(
                 create: (_) => AppRoute()
             ),
+            Provider<BaseRequest>(
+                create: (_) => BaseRequest()
+            ),
             Provider<TicketRequest>(
                 create: (_) => TicketRequest()
             ),
@@ -96,7 +101,8 @@ Future<void> myMain() async {
             ),
             ChangeNotifierProvider<SignupProvider>(
                 create: (BuildContext context) => SignupProvider(
-                    context.read<SignupRequest>()
+                    context.read<BaseRequest>(),
+                    context.read<SignupRequest>(),
                 )),
             ChangeNotifierProvider<LayoutStateProvider>(
                 create: (_) => LayoutStateProvider()
@@ -110,6 +116,11 @@ Future<void> myMain() async {
                 )),
             ChangeNotifierProvider<ProfileProvider>(
                 create: (BuildContext context) => ProfileProvider(
+                    context.read<ProfileRequest>()
+                )),
+            ChangeNotifierProvider(
+                create: (BuildContext context) => EditProfileProvider(
+                    context.read<BaseRequest>(),
                     context.read<ProfileRequest>()
                 )),
             ChangeNotifierProvider<LocaleProvider>(
