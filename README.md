@@ -48,7 +48,7 @@ A minor Flutter base-source
 
 ### [Fall in Luv with GraphQL](work_with_graphql)
 There is plenty of supported server and client [`libraries`](https://graphql.org/code/#services) for GraphQL. In scope of this project, I am using the [`GraphCMS`](https://graphcms.com/).
-* First of all, GraphQLClient requires both a link and a token to be initialized.
+* First of all, GraphQLClient requires both a endpoint and a token to be initialized. This stuff was available on this repo, you can take a look at [`this`](https://github.com/dubydu/fluttour/blob/458a873be898ad446fc73ab4e24a68d3b68aa83b/lib/data/api/api_client.dart#L12). 
 * Then, create a new request class (1) that `extends` from [`GraphQLAPIClient`](https://github.com/dubydu/fluttour/blob/master/lib/data/api/api_client.dart) class.
 * Exposing this class (1) object in [`myMain()`](https://github.com/dubydu/fluttour/blob/master/lib/my_app.dart) function.
 * Write a `Future` function inside the request class (1), this function must return the value.
