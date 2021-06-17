@@ -23,7 +23,6 @@ class ProfileProvider extends ChangeNotifierSafety {
     String? id = await Credential.singleton.getToken();
     if (id != null) {
       CharacterModel? result = await _profileRequest.getProfile(id: id);
-      print("object  $result");
       if (result != null) {
         characterModel = result;
         await  delegate?.fetchProfileSuccess(result);

@@ -24,7 +24,7 @@ class WPrimaryButton extends StatelessWidget {
         }
       },
       child: Container(
-        height: 70.H,
+        height: 60.H,
         decoration: BoxDecoration(
           color: backgroundColors(),
           border: Border.all(color: borderColors(), width: 1.5),

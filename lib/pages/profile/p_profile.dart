@@ -9,8 +9,9 @@ import 'package:fluttour/generated/l10n.dart';
 import 'package:fluttour/pages/profile/edit_profile/edit_profile_provider.dart';
 import 'package:fluttour/pages/profile/profile_delegate.dart';
 import 'package:fluttour/utils/extension/app_extension.dart';
+import 'package:fluttour/utils/extension/state_extension.dart';
 import 'package:fluttour/pages/profile/profile_provider.dart';
-import 'package:fluttour/utils/widgets/p_material.dart';
+import 'package:fluttour/pages/base/p_material.dart';
 import 'package:fluttour/utils/widgets/w_header.dart';
 import 'package:fluttour/utils/widgets/w_primary_button.dart';
 import 'package:provider/provider.dart';
@@ -119,30 +120,11 @@ class _PProfileState extends State<PProfile> with ProfileDelegate {
                               child: WPrimaryButton(
                                 title: "Clear Token",
                                 onPress: () async {
-                                  return showDialog<void>(
-                                    context: context,
-                                    barrierDismissible: false, // user must tap button!
-                                    builder: (BuildContext context) {
-                                      return AlertDialog(
-                                        content: Text('<${S.of(context).flut_tour}> Are you sure?'),
-                                        actions: <Widget>[
-                                          TextButton(
-                                            onPressed: () async {
-                                              context.navigator()?.pop();
-                                            },
-                                            child: const Text('Cancel'),),
-                                          TextButton(
-                                            onPressed: () async {
-                                              context.navigator()?.pop();
-                                              await Credential.singleton.clearToken();
-                                              context.navigator()?.pushNamedAndRemoveUntil(AppRoute.routeSignup, (route) => false);
-                                            },
-                                            child: const Text('OK'),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
+                                  return showConfirmDialog(() async {
+                                    context.navigator()?.pop();
+                                    await Credential.singleton.clearToken();
+                                    context.navigator()?.pushNamedAndRemoveUntil(AppRoute.routeSignup, (route) => false);
+                                  }, 'Are you sure you want to delete the token?');
                                 },
                                 isSelected: true,
                                 isLoading: false,
@@ -167,23 +149,7 @@ class _PProfileState extends State<PProfile> with ProfileDelegate {
 
   @override
   Future<void> fetchProfileFailed(String mgs) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          content: Text('<${Tutorial.mutations.getName()}> $mgs'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () async {
-                context.navigator()?.pop();
-              },
-              child: const Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
+    return await showErrorDialog('<${Tutorial.mutations.getName()}>', mgs);
   }
 
   @override

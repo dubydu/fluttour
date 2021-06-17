@@ -3,8 +3,9 @@ import 'package:fluttour/generated/l10n.dart';
 import 'package:fluttour/pages/signup/signup_delegate.dart';
 import 'package:fluttour/pages/signup/signup_provider.dart';
 import 'package:fluttour/utils/other/dynamic_size.dart';
-import 'package:fluttour/utils/widgets/p_material.dart';
+import 'package:fluttour/pages/base/p_material.dart';
 import 'package:fluttour/utils/extension/app_extension.dart';
+import 'package:fluttour/utils/extension/state_extension.dart';
 import 'package:fluttour/utils/widgets/w_auth_textfield.dart';
 import 'package:avoid_keyboard/avoid_keyboard.dart';
 import 'package:fluttour/utils/widgets/w_header.dart';
@@ -125,23 +126,7 @@ class _PSignUpState extends State<PSignUp> with DynamicSize, SignUpDelegate {
 
   @override
   Future<void> didSignInFailed(String mgs) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          content: Text('<${S.of(context).flut_tour}> $mgs'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () async {
-                context.navigator()?.pop();
-              },
-              child: const Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
+    return await showErrorDialog('<${S.of(context).flut_tour}>', mgs);
   }
 
   @override

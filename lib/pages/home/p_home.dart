@@ -5,7 +5,7 @@ import 'package:fluttour/pages/home/w_tutorial_item.dart';
 import 'package:fluttour/utils/other/dynamic_size.dart';
 import 'package:fluttour/app_define/app_color.dart';
 import 'package:fluttour/app_define/app_enum.dart';
-import 'package:fluttour/utils/widgets/p_material.dart';
+import 'package:fluttour/pages/base/p_material.dart';
 import 'package:fluttour/utils/widgets/w_header.dart';
 import 'package:provider/provider.dart';
 import 'package:fluttour/utils/extension/app_extension.dart';

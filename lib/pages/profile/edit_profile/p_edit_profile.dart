@@ -3,12 +3,13 @@ import 'package:fluttour/domain/models/character_model.dart';
 import 'package:fluttour/generated/l10n.dart';
 import 'package:fluttour/pages/profile/edit_profile/edit_profile_delegate.dart';
 import 'package:fluttour/pages/profile/edit_profile/edit_profile_provider.dart';
-import 'package:fluttour/utils/widgets/p_material.dart';
+import 'package:fluttour/pages/base/p_material.dart';
 import 'package:fluttour/utils/widgets/w_auth_textfield.dart';
 import 'package:fluttour/utils/widgets/w_header.dart';
 import 'package:fluttour/utils/widgets/w_primary_button.dart';
 import 'package:provider/provider.dart';
 import 'package:fluttour/utils/extension/app_extension.dart';
+import 'package:fluttour/utils/extension/state_extension.dart';
 import 'package:fluttour/app_define/app_route.dart';
 
 class PEditProfile extends StatefulWidget {
@@ -106,7 +107,7 @@ class _PEditProfileState extends State<PEditProfile> with EditProfileDelegate {
 
   @override
   Future<void> updateProfileFailed(String mgs) async {
-
+    return await showErrorDialog('<${S.of(context).edit_profile}>', mgs);
   }
 
   @override
