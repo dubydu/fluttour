@@ -1,4 +1,4 @@
-package com.example.Fluttour
+package com.dubydu.fluttour
 
 import io.flutter.embedding.android.FlutterActivity
 

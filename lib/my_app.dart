@@ -1,3 +1,4 @@
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fluttour/app_define/app_credential.dart';
@@ -19,7 +20,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttour/app_define/app_theme.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:flutter/services.dart';
 
 class MyApp extends StatefulWidget {
   MyApp({Key? key, required this.isAppAuthenticated}) : super(key: key);
@@ -41,7 +42,6 @@ class _MyAppState extends State<MyApp> {
     final AppRoute appRoute = context.watch<AppRoute>();
     final LocaleProvider localeProvider = context.watch<LocaleProvider>();
     final AppTheme appTheme = context.theme();
-
     return MaterialApp(
       navigatorKey: appRoute.navigatorKey,
       locale: localeProvider.locale,
@@ -64,6 +64,11 @@ class _MyAppState extends State<MyApp> {
 Future<void> myMain() async {
   /// Start services later
   WidgetsFlutterBinding.ensureInitialized();
+
+  /// Force status bar mode
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarIconBrightness: Brightness.dark
+  ));
 
   /// Force portrait mode
   await SystemChrome.setPreferredOrientations(

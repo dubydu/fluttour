@@ -65,8 +65,10 @@ class EditProfileProvider extends ChangeNotifierSafety {
       CharacterModel? result = await _profileRequest.editProfile(id: id, email: emailText!, name: character!);
       this.characterModel = result;
       if (result != null) {
-        await _baseRequest.publishCharacter(id: id);
-        await delegate?.updateProfileSuccess(result);
+        bool isPublishSuccess = await _baseRequest.publishCharacter(id: id);
+        if (isPublishSuccess == true) {
+          await delegate?.updateProfileSuccess(result);
+        }
       } else {
         await delegate?.updateProfileFailed("Update profile failed");
       }

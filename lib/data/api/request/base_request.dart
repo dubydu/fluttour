@@ -2,7 +2,7 @@ import 'package:fluttour/data/api/api_client.dart';
 
 class BaseRequest extends GraphQLAPIClient {
   /// Move character object from Draft to Publish stage
-  Future<void> publishCharacter({required String id}) async {
+  Future<bool> publishCharacter({required String id}) async {
     /// Query
     String publishCharacter = """
       mutation {
@@ -16,7 +16,8 @@ class BaseRequest extends GraphQLAPIClient {
     final result = await this.execute(publishCharacter);
     if (result.hasException) {
       handleException(result);
-      return;
+      return false;
     }
+    return true;
   }
 }

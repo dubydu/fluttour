@@ -54,7 +54,7 @@ class _PSignUpState extends State<PSignUp> with DynamicSize, SignUpDelegate {
                   child: Column(
                     children: <Widget>[
                       Container(
-                        height: 80.H,
+                        height: 70.H,
                       ),
                       Container(
                         margin: EdgeInsets.only(left: 32.W,
@@ -68,7 +68,7 @@ class _PSignUpState extends State<PSignUp> with DynamicSize, SignUpDelegate {
                                 onChange: (text) async {
                                   _signupProvider.emailText = text;
                                 }),
-                            SizedBox(height: 20.H),
+                            SizedBox(height: 10.H),
                             WAuthTextField(controller: _characterController,
                                 labelText: S.of(context).character,
                                 obscureText: false,
@@ -76,7 +76,7 @@ class _PSignUpState extends State<PSignUp> with DynamicSize, SignUpDelegate {
                                 onChange: (text) async {
                                   _signupProvider.character = text;
                                 }),
-                            SizedBox(height: 20.H),
+                            SizedBox(height: 10.H),
                             Selector<SignupProvider, bool>(
                                 selector: (_, SignupProvider provider) => provider.passwordObscureTextState,
                                 builder: (BuildContext context, bool data, __) {
@@ -97,7 +97,7 @@ class _PSignUpState extends State<PSignUp> with DynamicSize, SignUpDelegate {
                       Container(
                         margin: EdgeInsets.only(left: 32.W,
                             right: 32.W,
-                            top: 50.H),
+                            top: 20.H),
                         child: Column(
                           children: <Widget>[
                             Consumer<SignupProvider>(
