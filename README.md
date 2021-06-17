@@ -1,4 +1,4 @@
-[![Build Status](https://app.bitrise.io/app/38259925b6bfe2bd/status.svg?token=7Q0InN8BEzmzxC0GPoddUg&branch=master)](https://app.bitrise.io/app/38259925b6bfe2bd)
+[![Build Status](https://app.bitrise.io/app/38259925b6bfe2bd/status.svg?token=7Q0InN8BEzmzxC0GPoddUg&branch=develop)](https://app.bitrise.io/app/38259925b6bfe2bd)
 
 A minor Flutter base-source
 

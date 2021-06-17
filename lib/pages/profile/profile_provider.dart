@@ -25,7 +25,7 @@ class ProfileProvider extends ChangeNotifierSafety {
       CharacterModel? result = await _profileRequest.getProfile(id: id);
       if (result != null) {
         characterModel = result;
-        await  delegate?.fetchProfileSuccess(result);
+        await delegate?.fetchProfileSuccess(result);
       } else {
         await delegate?.fetchProfileFailed("Fetch profile failed");
       }

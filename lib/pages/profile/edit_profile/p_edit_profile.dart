@@ -19,7 +19,7 @@ class PEditProfile extends StatefulWidget {
   _PEditProfileState createState() => _PEditProfileState();
 }
 
-class _PEditProfileState extends State<PEditProfile> with EditProfileDelegate {
+class _PEditProfileState extends State<PEditProfile> with EditProfileDelegate, HeaderDelegate {
 
   /// Properties
   late EditProfileProvider _editProfileProvider;
@@ -38,6 +38,12 @@ class _PEditProfileState extends State<PEditProfile> with EditProfileDelegate {
   }
 
   @override
+  void onBack() {
+    _editProfileProvider.resetState();
+    context.navigator()?.pop();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return PMaterial(
       child: Consumer<EditProfileProvider>(
@@ -47,7 +53,7 @@ class _PEditProfileState extends State<PEditProfile> with EditProfileDelegate {
               child: Container (
                 child: Column(
                   children: <Widget>[
-                    WHeader(title: S.of(context).edit_profile, isShowBackButton: true,),
+                    WHeader(title: S.of(context).edit_profile, isShowBackButton: true, delegate: this,),
                     Container(
                       child: Expanded(
                         child: Stack(
@@ -112,6 +118,5 @@ class _PEditProfileState extends State<PEditProfile> with EditProfileDelegate {
 
   @override
   Future<void> updateProfileSuccess(CharacterModel result) async {
-    context.navigator()?.pop();
   }
 }

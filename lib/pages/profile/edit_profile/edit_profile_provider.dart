@@ -72,12 +72,16 @@ class EditProfileProvider extends ChangeNotifierSafety {
       } else {
         await delegate?.updateProfileFailed("Update profile failed");
       }
+      isSignUpButtonLoading = false;
     }
-    isSignUpButtonLoading = false;
   }
 
   @override
   void resetState() {
-
+    _emailText = null;
+    _character = null;
+    _characterModel = null;
+    _isEditButtonEnable = false;
+    _isSignUpButtonLoading = false;
   }
 }
