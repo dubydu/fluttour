@@ -20,7 +20,6 @@ class AppRoute {
 
   ///#region ROUTE NAMES
   /// -----------------
-  static const String routeRoot = '/';
   static const String routeHome = '/home';
   static const String routeSignup = '/sign_up';
   static const String routeLayoutState = '/layout_state';
@@ -68,7 +67,6 @@ class AppRoute {
           builder: (_) => PEditProfile()
         );
       case routeSignup:
-      case routeRoot:
         return MaterialPageRoute<dynamic>(
           settings: settings,
           builder: (_) => PSignUp()

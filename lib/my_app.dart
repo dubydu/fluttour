@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
       ],
       debugShowCheckedModeBanner: false,
-      initialRoute: widget.isAppAuthenticated ? AppRoute.routeHome : AppRoute.routeRoot ,
+      initialRoute: widget.isAppAuthenticated ? AppRoute.routeHome : AppRoute.routeSignup,
       onGenerateRoute: appRoute.generateRoute,
       theme: appTheme.buildThemeData(),
       navigatorObservers: <NavigatorObserver>[appRoute.routeObserver],
