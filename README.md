@@ -2,16 +2,16 @@
 
 A minor Flutter base-source
 
-### [Getting Started](#gettingstarted)
+### [Getting Started](#getting-started)
 
 * Flutter (Channel stable, 2.2.1)
 * Dart 2.13.1
 
-### [Main Packages](#packages)
+### [Main Packages](#main-packages)
 *  [Provider](https://pub.dev/packages/provider): An app state management.
 *  [graphql_flutter](https://pub.dev/packages/graphql_flutter): A GraphQL client for Flutter.
 
-### [Usage](usage)
+### [Usage](#usage)
 
 #### Run App with a specific environment.
 * Development: `flutter run -t lib/main_dev.dart`
@@ -46,7 +46,7 @@ A minor Flutter base-source
       # add any styles here follow above rule
 ```
 
-### [Fall in Luv with GraphQL](work_with_graphql)
+### [Fall in Luv with GraphQL](#fall-in-luv-with-graphql)
 There is plenty of supported server and client [`libraries`](https://graphql.org/code/#services) for GraphQL. In scope of this project, I am using the [`GraphCMS`](https://graphcms.com/).
 * First of all, GraphQLClient requires both a endpoint and a token to be initialized. This stuff was available on this repo, you can take a look at [`this`](https://github.com/dubydu/fluttour/blob/458a873be898ad446fc73ab4e24a68d3b68aa83b/lib/data/api/api_client.dart#L12). 
 * Then, create a new request class (1) that `extends` from [`GraphQLAPIClient`](https://github.com/dubydu/fluttour/blob/master/lib/data/api/api_client.dart) class.
@@ -55,7 +55,7 @@ There is plenty of supported server and client [`libraries`](https://graphql.org
 * Inside the `A_Provider` class, write a `Future` function, the main responsibility of this function is call the `Future` function inside the request class (1), then handle the Response (parse data, request status code...).
 * About GraphQL APIs, such as `Query`, `Mutation`,... you can reference this [`document`](https://graphcms.com/docs/content-api/queries)
 
-### [Local Storage](usage)
+### [Local Storage](#local-storage)
 *  [localstorage](https://pub.dev/packages/localstorage): Simple json file-based storage for flutter.
 #### How to use
 * This recipe cover how to save and get the object from local disk using [localstorage](https://pub.dev/packages/localstorage).
@@ -75,10 +75,9 @@ There is plenty of supported server and client [`libraries`](https://graphql.org
   ```
 * Inside the [`Credential`](https://github.com/dubydu/fluttour/blob/master/lib/app_define/app_credential.dart) class, create `set { }` `get { }` functions that you want to set and get the target object.
 
-### [Pitfalls](pitfalls)
+### [Pitfalls](#pitfalls)
 - Make sure `flutter pub get` before you run the app.
-
-### [WIP](wip)
+### [Tube-con-to-niu...](#tube-con-to-niu...)
 
 ---
 
