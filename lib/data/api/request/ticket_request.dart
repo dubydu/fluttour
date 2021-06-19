@@ -2,12 +2,12 @@ import 'package:fluttour/domain/models/ticket_model.dart';
 import 'package:fluttour/data/api/api_client.dart';
 
 class TicketRequest extends GraphQLAPIClient {
-  Future<List<TicketModel>> getTickets() async {
+  Future<List<TicketModel>> getTickets({required int first, required int skip}) async {
     /// Query
     String fetchTickets = """
       query {
-            tickets(orderBy: date_DESC) {
-              id, race_id, ticket_status, date, tickets { type }
+            tickets(orderBy: date_DESC, first: $first, skip: $skip) {
+              id, race_id, ticket_status, date, tickets { type, purchase_count }
             }
         }
     """;

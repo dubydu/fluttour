@@ -52,5 +52,17 @@
     "description": "Edit Profile Page",
     "type": "text",
     "placeholders": {}
+  },
+  "no_more_data": "No more data",
+  "@no_more_data": {
+    "description": "Pagination Page",
+    "type": "text",
+    "placeholders": {}
+  },
+  "data_is_empty": "Data is empty",
+  "@data_is_empty": {
+    "description": "Pagination Page",
+    "type": "text",
+    "placeholders": {}
   }
 }

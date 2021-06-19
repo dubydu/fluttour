@@ -139,6 +139,26 @@ class S {
       args: [],
     );
   }
+
+  /// `No more data`
+  String get no_more_data {
+    return Intl.message(
+      'No more data',
+      name: 'no_more_data',
+      desc: 'Pagination Page',
+      args: [],
+    );
+  }
+
+  /// `Data is empty`
+  String get data_is_empty {
+    return Intl.message(
+      'Data is empty',
+      name: 'data_is_empty',
+      desc: 'Pagination Page',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -23,11 +23,13 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "app_title": MessageLookupByLibrary.simpleMessage("FlutterxGraphQL"),
         "character": MessageLookupByLibrary.simpleMessage("User Name"),
+        "data_is_empty": MessageLookupByLibrary.simpleMessage("Data is empty"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "flut_tour": MessageLookupByLibrary.simpleMessage("Fluttour"),
         "hello": MessageLookupByLibrary.simpleMessage("Hello"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "no_more_data": MessageLookupByLibrary.simpleMessage("No more data"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "signup": MessageLookupByLibrary.simpleMessage("Sign Up")
       };
