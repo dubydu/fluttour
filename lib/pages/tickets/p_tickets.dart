@@ -60,6 +60,7 @@ class _PTicketsState extends State<PTickets> with HeaderDelegate {
                       child: SafeArea(
                         top: false,
                         child: SingleChildScrollView(
+                          physics: const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
                           child: Column(
                             children: <Widget>[
                               ListView.builder(

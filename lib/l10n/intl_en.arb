@@ -29,6 +29,12 @@
     "type": "text",
     "placeholders": {}
   },
+  "go": "Go",
+  "@go": {
+    "description": "Signup Page",
+    "type": "text",
+    "placeholders": {}
+  },
   "email": "Email",
   "@email": {
     "description": "Signup Page",

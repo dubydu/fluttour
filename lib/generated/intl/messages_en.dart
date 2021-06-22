@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "flut_tour": MessageLookupByLibrary.simpleMessage("Fluttour"),
+        "go": MessageLookupByLibrary.simpleMessage("Go"),
         "hello": MessageLookupByLibrary.simpleMessage("Hello"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "no_more_data": MessageLookupByLibrary.simpleMessage("No more data"),

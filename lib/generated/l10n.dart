@@ -100,6 +100,16 @@ class S {
     );
   }
 
+  /// `Go`
+  String get go {
+    return Intl.message(
+      'Go',
+      name: 'go',
+      desc: 'Signup Page',
+      args: [],
+    );
+  }
+
   /// `Email`
   String get email {
     return Intl.message(

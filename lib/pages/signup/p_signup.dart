@@ -103,7 +103,7 @@ class _PSignUpState extends State<PSignUp> with DynamicSize, SignUpDelegate {
                             Consumer<SignupProvider>(
                                 builder: (BuildContext context, SignupProvider provider, _) {
                                 return WPrimaryButton(
-                                  title: S.of(context).signup,
+                                  title: S.of(context).go,
                                   isSelected: provider.isSignUpButtonEnable,
                                   onPress: () async {
                                     await _signupProvider.signup();
