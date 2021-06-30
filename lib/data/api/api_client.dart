@@ -34,14 +34,22 @@ class GraphQLAPIClient {
     );
   }
 
-  /// Start execute
-  Future<QueryResult> execute(String queries) async {
+  /// Start query
+  Future<QueryResult> query(String queries) async {
     final WatchQueryOptions _options = WatchQueryOptions(
       document: gql(queries),
       pollInterval: Duration(seconds: 15),
       fetchResults: true,
     );
     return await _client().query(_options);
+  }
+
+  /// Start mutation
+  Future<QueryResult> mutation(String queries) async {
+    final MutationOptions _options = MutationOptions(
+      document: gql(queries),
+    );
+    return await _client().mutate(_options);
   }
 
   /// Handle exception

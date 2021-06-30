@@ -15,13 +15,14 @@ class SignupRequest extends GraphQLAPIClient {
           }
         }
     """;
-    final result = await this.execute(mutationCharacter);
+    final result = await this.mutation(mutationCharacter);
     if (result.hasException) {
       handleException(result);
       return null;
     }
     final Map<String, dynamic> data = result.data;
     Map<String, dynamic> characterJSON = data["createCharacter"];
+    print('=======$characterJSON');
     CharacterModel character = CharacterModel.fromJson(characterJSON);
     return character;
   }

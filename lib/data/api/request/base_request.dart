@@ -13,7 +13,7 @@ class BaseRequest extends GraphQLAPIClient {
         }
       }
     """;
-    final result = await this.execute(publishCharacter);
+    final result = await this.query(publishCharacter);
     if (result.hasException) {
       handleException(result);
       return false;

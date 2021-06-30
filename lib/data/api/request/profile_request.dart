@@ -12,7 +12,7 @@ class ProfileRequest extends GraphQLAPIClient {
             }
         }
     """;
-    final result = await this.execute(fetchProfile);
+    final result = await this.query(fetchProfile);
     if (result.hasException) {
       handleException(result);
       return null;
@@ -36,7 +36,7 @@ class ProfileRequest extends GraphQLAPIClient {
       }
     }
     """;
-    final result = await this.execute(updateProfile);
+    final result = await this.mutation(updateProfile);
     if (result.hasException) {
       handleException(result);
       return null;

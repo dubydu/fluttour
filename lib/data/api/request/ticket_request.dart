@@ -11,7 +11,7 @@ class TicketRequest extends GraphQLAPIClient {
             }
         }
     """;
-    final result = await this.execute(fetchTickets);
+    final result = await this.query(fetchTickets);
     if (result.hasException) {
       handleException(result);
       return [];
