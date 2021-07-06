@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttour/app_define/app_color.dart';
 import 'package:fluttour/generated/l10n.dart';
 import 'package:fluttour/pages/tickets/tickets_provider.dart';
 import 'package:fluttour/utils/extension/app_extension.dart';

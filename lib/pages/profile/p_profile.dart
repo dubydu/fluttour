@@ -5,7 +5,6 @@ import 'package:fluttour/app_define/app_credential.dart';
 import 'package:fluttour/app_define/app_enum.dart';
 import 'package:fluttour/app_define/app_style.dart';
 import 'package:fluttour/domain/models/character_model.dart';
-import 'package:fluttour/generated/l10n.dart';
 import 'package:fluttour/pages/profile/edit_profile/edit_profile_provider.dart';
 import 'package:fluttour/pages/profile/profile_delegate.dart';
 import 'package:fluttour/utils/extension/app_extension.dart';
