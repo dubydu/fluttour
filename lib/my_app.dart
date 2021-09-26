@@ -1,3 +1,5 @@
+import 'package:fluttour/data/api/request/token_request.dart';
+import 'package:fluttour/pages/web3/web3_provider.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -21,6 +23,8 @@ import 'package:fluttour/app_define/app_theme.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:flutter/services.dart';
+
+import 'data/erc20/contract_locator.dart';
 
 class MyApp extends StatefulWidget {
   MyApp({Key? key, required this.isAppAuthenticated}) : super(key: key);
@@ -80,6 +84,8 @@ Future<void> myMain() async {
 
   String? userToken = await Credential.singleton.getToken();
 
+  final ContractLocator contractLocator = await ContractLocator.setup();
+
   runApp(
       MultiProvider(
           providers: <SingleChildWidget>[
@@ -98,8 +104,14 @@ Future<void> myMain() async {
             Provider(
                 create: (_) => ProfileRequest()
             ),
+            Provider(
+                create: (_) => TokenRequest()
+            ),
             ChangeNotifierProvider<AppThemeProvider>(
                 create: (_) => AppThemeProvider()
+            ),
+            Provider<ContractLocator>(
+                create: (_) => contractLocator
             ),
             ChangeNotifierProvider<HomeProvider>(
                 create: (_) => HomeProvider()
@@ -127,6 +139,11 @@ Future<void> myMain() async {
                 create: (BuildContext context) => EditProfileProvider(
                     context.read<BaseRequest>(),
                     context.read<ProfileRequest>()
+                )),
+            ChangeNotifierProvider(
+                create: (BuildContext context) => Web3Provider(
+                    context.read<ContractLocator>(),
+                    context.read<TokenRequest>()
                 )),
             ChangeNotifierProvider<LocaleProvider>(
                 create: (_) => LocaleProvider()

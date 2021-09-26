@@ -4,8 +4,11 @@ extension DevelopmentEnvironment on Environment {
   /// Product environment
   static Environment development() {
     return Environment(
-        graphQLEndPoint: 'https://api-ap-northeast-1.graphcms.com/v2/ckpphjwhcz1bo01xsbdkx7rjx/master',
-        googleApiKey: '',
-        websocketEndpoint: 'ws://');
+        cmsGraphQLEndPoint: 'https://api-ap-northeast-1.graphcms.com/v2/ckpphjwhcz1bo01xsbdkx7rjx/master',
+        uniSwapGraphQLEndpoint: 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2',
+        httpsEthRPCEndpoint: 'https://mainnet.infura.io/v3/48df4ebd2b414bce8a872974dc80e99a',
+        wssEthRPCEndpoint: 'wss://mainnet.infura.io/ws/v3/48df4ebd2b414bce8a872974dc80e99a',
+        httpsBscRPCEndpoint: '',
+        wssBscRPCEndpoint: '');
   }
 }

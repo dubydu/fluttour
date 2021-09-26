@@ -11,7 +11,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "app_title": "FlutterxGraphQL",
+  "app_title": "FlutterxWeb3",
   "@app_title": {
     "description": "Global",
     "type": "text",
@@ -68,6 +68,12 @@
   "data_is_empty": "Data is empty",
   "@data_is_empty": {
     "description": "Pagination Page",
+    "type": "text",
+    "placeholders": {}
+  },
+  "token_information": "Token information",
+  "@token_information": {
+    "description": "Token information",
     "type": "text",
     "placeholders": {}
   }

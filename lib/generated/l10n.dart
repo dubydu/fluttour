@@ -70,10 +70,10 @@ class S {
     );
   }
 
-  /// `FlutterxGraphQL`
+  /// `FlutterxWeb3`
   String get app_title {
     return Intl.message(
-      'FlutterxGraphQL',
+      'FlutterxWeb3',
       name: 'app_title',
       desc: 'Global',
       args: [],
@@ -166,6 +166,16 @@ class S {
       'Data is empty',
       name: 'data_is_empty',
       desc: 'Pagination Page',
+      args: [],
+    );
+  }
+
+  /// `Token information`
+  String get token_information {
+    return Intl.message(
+      'Token information',
+      name: 'token_information',
+      desc: 'Token information',
       args: [],
     );
   }

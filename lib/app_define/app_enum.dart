@@ -19,6 +19,7 @@ enum Tutorial {
   mutations,
   layoutState,
   gridView,
+  web3
 }
 
 extension TutorialExtension on Tutorial {
@@ -32,6 +33,8 @@ extension TutorialExtension on Tutorial {
         return 'Pagination';
       case Tutorial.mutations:
         return 'Mutations';
+      case Tutorial.web3:
+        return 'Web3';
       default:
         return '';
     }

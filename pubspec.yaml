@@ -16,6 +16,7 @@ dependencies:
   provider: ^5.0.0
   localstorage: ^3.0.6
   graphql_flutter: ^4.0.0-beta
+  web3dart: ^2.1.4
   http: ^0.13.3
   avoid_keyboard: ^0.3.0
 
@@ -31,7 +32,7 @@ flutter:
   assets:
     - assets/app/icons/
     - assets/app/fonts/
-
+    - assets/app/jsons/fluttour_abi.json
   fonts:
   - family: MontserratAlternates
     fonts:

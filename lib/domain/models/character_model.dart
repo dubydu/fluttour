@@ -5,7 +5,7 @@ class CharacterModel {
     this.email,
     this.id});
 
-  factory CharacterModel.fromJson(Map<String, dynamic> json) =>  CharacterModel (
+  factory CharacterModel.fromJson(Map<String, dynamic> json) => CharacterModel (
     id: (json['id'] != null) ? json['id'] as String : null,
     name: (json['name'] != null) ? json['name'] as String : null,
     password: (json['password'] != null) ? json['password'] as String : null,

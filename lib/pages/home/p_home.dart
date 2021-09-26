@@ -53,6 +53,8 @@ class _HomePageState extends State<HomePage> with DynamicSize, HeaderDelegate {
                       itemBuilder: (BuildContext context, int index) {
                         return WTutorialItem(tutorial: data[index], onPressItem: () {
                           switch (Tutorial.values[index]) {
+                            case Tutorial.web3:
+                              return context.navigator()?.pushNamed(AppRoute.routeWeb3);
                             case Tutorial.layoutState:
                               return context.navigator()?.pushNamed(AppRoute.routeLayoutState);
                             case Tutorial.gridView:

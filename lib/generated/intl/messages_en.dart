@@ -21,7 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "app_title": MessageLookupByLibrary.simpleMessage("FlutterxGraphQL"),
+        "app_title": MessageLookupByLibrary.simpleMessage("FlutterxWeb3"),
         "character": MessageLookupByLibrary.simpleMessage("User Name"),
         "data_is_empty": MessageLookupByLibrary.simpleMessage("Data is empty"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "no_more_data": MessageLookupByLibrary.simpleMessage("No more data"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
-        "signup": MessageLookupByLibrary.simpleMessage("Sign Up")
+        "signup": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "token_information":
+            MessageLookupByLibrary.simpleMessage("Token information")
       };
 }

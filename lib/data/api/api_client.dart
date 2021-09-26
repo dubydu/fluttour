@@ -1,10 +1,13 @@
 import 'package:fluttour/app_define/app_config.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:normalize/utils.dart';
+import 'package:gql/ast.dart';
+import 'package:gql/language.dart';
 
 class GraphQLAPIClient {
   GraphQLClient _client() {
     final HttpLink _httpLink = HttpLink(
-      AppConfig.shared.env!.graphQLEndPoint,
+      AppConfig.shared.env!.cmsGraphQLEndPoint,
     );
 
     /// Auth link
@@ -66,5 +69,52 @@ class GraphQLAPIClient {
       print("::: GraphQL error message log: ${networkException.message}");
       return;
     }
+  }
+}
+
+class AddNestedTypenameVisitor extends AddTypenameVisitor {
+  @override
+  visitOperationDefinitionNode(node) => node;
+}
+
+// This solution solves for the issue: Null value resolved for non-null field `__typename`
+DocumentNode customGql(String document) => transform(
+  parseString(document),
+  [AddNestedTypenameVisitor()],
+);
+
+extension GraphQLAPIV2 on GraphQLAPIClient {
+  GraphQLClient _v2() {
+    final HttpLink _httpLink = HttpLink(
+      AppConfig.shared.env!.uniSwapGraphQLEndpoint,
+    );
+
+    /// Policies
+    /// - Remove cache
+    final policies = Policies(
+      fetch: FetchPolicy.noCache,
+    );
+
+    return GraphQLClient(
+      cache: GraphQLCache(
+        store: HiveStore(),
+      ),
+      link: _httpLink,
+      defaultPolicies: DefaultPolicies(
+        watchQuery: policies,
+        query: policies,
+        mutate: policies,
+      ),
+    );
+  }
+
+  /// Start query
+  Future<QueryResult> v2_query(String queries) async {
+    final WatchQueryOptions _options = WatchQueryOptions(
+      document: customGql(queries),
+      pollInterval: Duration(seconds: 15),
+      fetchResults: true,
+    );
+    return await _v2().query(_options);
   }
 }

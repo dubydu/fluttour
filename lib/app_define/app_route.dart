@@ -7,6 +7,7 @@ import 'package:fluttour/pages/profile/edit_profile/p_edit_profile.dart';
 import 'package:fluttour/pages/profile/p_profile.dart';
 import 'package:fluttour/pages/signup/p_signup.dart';
 import 'package:fluttour/pages/tickets/p_tickets.dart';
+import 'package:fluttour/pages/web3/p_web3.dart';
 import 'package:provider/provider.dart';
 
 class AppRoute {
@@ -27,6 +28,7 @@ class AppRoute {
   static const String routeFetchData = '/fetch_data';
   static const String routeDataMutations = '/data_mutations';
   static const String routeEditProfile = '/edit_profile';
+  static const String routeWeb3 = '/web3';
   ///#endregion
 
   /// App route observer
@@ -75,6 +77,11 @@ class AppRoute {
         return MaterialPageRoute<dynamic>(
           settings: settings,
           builder: (_) => const HomePage()
+        );
+      case routeWeb3:
+        return MaterialPageRoute<dynamic>(
+            settings: settings,
+            builder: (_) => const Web3Page()
         );
       default:
         return null;
