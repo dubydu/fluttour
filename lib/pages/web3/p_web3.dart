@@ -41,7 +41,7 @@ class _Web3PageState extends State<Web3Page> {
                   WHeader(title: Tutorial.web3.getName(),
                       isShowBackButton: true),
                   Container(
-                    padding: EdgeInsets.only(top: 60.H),
+                    padding: EdgeInsets.only(top: 100.H),
                     child: Container(
                       alignment: Alignment.center,
                       child: Column(
@@ -56,7 +56,7 @@ class _Web3PageState extends State<Web3Page> {
                                ]
                               )
                             )
-                          else Container()
+                          else Container(child: CupertinoActivityIndicator(radius: 18.SP, animating: true))
                         ],
                       ),
                     ),

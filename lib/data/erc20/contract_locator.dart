@@ -15,7 +15,7 @@ class ContractLocator {
   Future<ContractService> initInstance(String tokenAddress) async {
     final wss = AppConfig.shared.env!.wssEthRPCEndpoint;
     final https = Web3Client(AppConfig.shared.env!.httpsEthRPCEndpoint, Client(),
-        socketConnector:  () => IOWebSocketChannel.connect(wss).cast<String>());
+        socketConnector: () => IOWebSocketChannel.connect(wss).cast<String>());
     final DeployedContract contract = await ContractParser.fromAssets(tokenAddress);
     return ContractService(https, contract);
   }

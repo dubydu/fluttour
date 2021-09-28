@@ -31,8 +31,6 @@ class TokenRequest extends GraphQLAPIClient {
          symbol
          decimals
          derivedETH
-         tradeVolumeUSD
-         totalLiquidity
        }
     }
     ''';
