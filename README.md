@@ -8,8 +8,9 @@ A minor Flutter base-source
 * Dart 2.13.1
 
 ### [Main Packages](#main-packages)
-*  [Provider](https://pub.dev/packages/provider): An app state management.
-*  [graphql_flutter](https://pub.dev/packages/graphql_flutter): A GraphQL client for Flutter.
+* [Provider](https://pub.dev/packages/provider): An app state management.
+* [graphql_flutter](https://pub.dev/packages/graphql_flutter): A GraphQL client for Flutter.
+* [web3dart](https://github.com/simolus3/web3dart): Connect to interact with the Ethereum blockchain.
 
 ### [Usage](#usage)
 

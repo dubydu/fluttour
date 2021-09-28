@@ -54,7 +54,7 @@ class Web3Provider extends ChangeNotifierSafety {
         print('AXS Price: ${axsModel?.price}');
         notifyListeners();
       }
-    }, token: AXS);
+    }, token: AXS, decimals: axsModel?.getDecimalsInt() ?? 0);
   }
 
   @override
