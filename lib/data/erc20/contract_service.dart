@@ -9,7 +9,7 @@ typedef TransferEvent = void Function(
 typedef TransferValue = void Function(
     BigInt? value);
 
-enum EventABIType {
+enum SCEvents {
   Transfer,
   Approval,
 }
@@ -18,7 +18,7 @@ abstract class ContractServiceDelegate {
   Future<List<dynamic>> getAmountsOut(List<dynamic> from);
   Future<List<dynamic>> getAmountsIn(List<dynamic> from);
   Future<void> dispose();
-  StreamSubscription listenEvent(TransferEvent onTransfer, EventABIType type);
+  StreamSubscription listenEvent(TransferEvent onTransfer, SCEvents type);
 }
 
 class ContractService implements ContractServiceDelegate {
@@ -58,7 +58,7 @@ class ContractService implements ContractServiceDelegate {
   }
 
   @override
-  StreamSubscription listenEvent(TransferEvent onTransfer, EventABIType type) {
+  StreamSubscription listenEvent(TransferEvent onTransfer, SCEvents type) {
     var events = client.events(FilterOptions.events(
       contract: contract,
       event: getEvent(type),
@@ -76,9 +76,9 @@ class ContractService implements ContractServiceDelegate {
     });
   }
 
-  ContractEvent getEvent(EventABIType type) {
+  ContractEvent getEvent(SCEvents type) {
     switch (type) {
-      case EventABIType.Approval:
+      case SCEvents.Approval:
         return _approvalEvent();
       default:
         return _transferEvent();

@@ -1,10 +1,7 @@
-import 'dart:math';
-
 import 'package:fluttour/data/erc20/contract_locator.dart';
 import 'package:fluttour/data/erc20/contract_service.dart';
 import 'package:web3dart/web3dart.dart' as web3;
 import 'dart:async';
-
 import 'package:web3dart/web3dart.dart';
 
 class ContractClient {
@@ -21,7 +18,7 @@ class ContractClient {
     contractService.listenEvent((web3.EthereumAddress from, web3.EthereumAddress to, BigInt value) async {
       result = await getAmountsIn(token, decimals);
       onTransfer(result);
-    }, EventABIType.Transfer);
+    }, SCEvents.Transfer);
   }
 
   /// Get amounts in
