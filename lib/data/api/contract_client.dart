@@ -12,11 +12,11 @@ class ContractClient {
 
   late final ContractLocator contractLocator;
   final String WETH = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
-  final String UNISWAP_ROUTER_V2 = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D';
+  final String UNISWAP_ROUTER_V2_FACTORY = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D';
 
   /// Listen the contract event
-  Future<void> listenContract(TransferValue onTransfer, {required String token, required int decimals}) async {
-    double? result = 0;
+  Future<void> listenContract(TransferValue onTransfer, {required String token, required BigInt decimals}) async {
+    BigInt? result = BigInt.zero;
     final ContractService contractService = await contractLocator.initInstance(WETH);
     contractService.listenEvent((web3.EthereumAddress from, web3.EthereumAddress to, BigInt value) async {
       result = await getAmountsIn(token, decimals);
@@ -25,19 +25,19 @@ class ContractClient {
   }
 
   /// Get amounts in
-  Future<double?> getAmountsIn(String token, int decimals) async {
+  Future<BigInt?> getAmountsIn(String token, BigInt decimals) async {
     final EthereumAddress add1 = web3.EthereumAddress.fromHex(WETH);
     final EthereumAddress add2 = web3.EthereumAddress.fromHex(token);
 
-    final ContractService contractService = await contractLocator.initInstance(UNISWAP_ROUTER_V2);
+    final ContractService contractService = await contractLocator.initInstance(UNISWAP_ROUTER_V2_FACTORY);
 
-    BigInt amount = BigInt.from(double.parse('1.0') * pow(10, decimals));
+    BigInt amount = decimals;
     final List<web3.EthereumAddress> listAddress = <web3.EthereumAddress>[add1, add2];
     List<dynamic> param = <dynamic>[amount, listAddress];
 
     List<dynamic> response = await contractService.getAmountsIn(param);
 
-    double tokenPerWETH = (response[0] as BigInt) / (response[1] as BigInt); // response[1] is the decimals
+    BigInt tokenPerWETH = response[0] as BigInt;
 
     return tokenPerWETH;
   }

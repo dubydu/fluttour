@@ -8,7 +8,7 @@ class TokenRequest extends GraphQLAPIClient {
     String query = '''
     query {
       bundle(id: "1" ) {
-        ethPrice
+        ethPriceUSD
       }
     }
     ''';

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class TokenModel {
   TokenModel({this.name, this.symbol, this.derivedETH, this.price, this.decimals});
 
@@ -13,8 +15,9 @@ class TokenModel {
   final String? derivedETH;
   final String? decimals;
   double? price;
+  BigInt? getAmountsIn;
 
-  int getDecimalsInt() {
-    return int.parse(decimals ?? '0');
+  BigInt getDecimals() {
+    return BigInt.from(double.parse('1.0') * pow(10, int.parse(decimals ?? '0')));
   }
 }

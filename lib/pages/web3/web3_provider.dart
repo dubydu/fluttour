@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'dart:math';
 import 'package:fluttour/data/api/contract_client.dart';
 import 'package:fluttour/data/api/request/token_request.dart';
 import 'package:fluttour/data/erc20/contract_locator.dart';
@@ -11,19 +13,21 @@ class Web3Provider extends ChangeNotifierSafety {
   final ContractLocator contractLocator;
   final TokenRequest tokenRequest;
 
+  late Timer _timer;
+
   /// WETH token
   final String WETH = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
   double WETHCurrentPrice = 0;
 
-  /// AXS token
-  final String AXS = '0xbb0e17ef65f82ab018d8edd776e8dd940327b28b';
+  /// Token address
+  final String tokenAddress = '0x990f341946a3fdb507ae7e52d17851b87168017c';
 
-  TokenModel? _axsModel;
+  TokenModel? _tokenModel;
 
-  TokenModel? get axsModel => _axsModel;
+  TokenModel? get tokenModel => _tokenModel;
 
-  set axsModel(TokenModel? value) {
-    _axsModel = value;
+  set tokenModel(TokenModel? value) {
+    _tokenModel = value;
     notifyListeners();
   }
 
@@ -34,31 +38,46 @@ class Web3Provider extends ChangeNotifierSafety {
       TokenModel? tokenModel = await tokenRequest.getTokenInformation(
           token: WETH);
       if (tokenModel != null) {
-        double stableTokenPrice = double.parse(tokenModel.derivedETH ?? '1') *
+        double wETHPrice = double.parse(tokenModel.derivedETH ?? '1') *
             ethPrice;
-        WETHCurrentPrice = stableTokenPrice;
+        WETHCurrentPrice = wETHPrice;
         print('WETHPrice:  $WETHCurrentPrice');
       }
     }
   }
 
   Future<TokenModel?> getTokenInfo() async {
-    axsModel = await tokenRequest.getTokenInformation(token: AXS);
+    tokenModel = await tokenRequest.getTokenInformation(token: tokenAddress);
   }
 
   Future<void> listenContract() async {
     await _getWETHPrice();
+    BigInt decimals = tokenModel?.getDecimals() ?? BigInt.one;
     await ContractClient(contractLocator: contractLocator).listenContract((value) {
-      if (value != null && axsModel != null) {
-        axsModel?.price = value * WETHCurrentPrice;
-        print('AXS Price: ${axsModel?.price}');
-        notifyListeners();
+      if (value != null) {
+        tokenModel?.getAmountsIn = value;
+        startCalculateThePrice();
       }
-    }, token: AXS, decimals: axsModel?.getDecimalsInt() ?? 0);
+    }, token: tokenAddress, decimals: decimals);
+  }
+
+  Future<void> startCalculateThePrice() async {
+    int? amountsIn = tokenModel?.getAmountsIn?.toInt();
+    if (tokenModel != null && amountsIn != null) {
+      tokenModel?.price = (amountsIn * WETHCurrentPrice) / (tokenModel?.getDecimals().toInt() ?? 1);
+      notifyListeners();
+    }
+  }
+
+  Future<void> startTimer() async {
+    _timer = Timer.periodic(Duration(seconds: 5), (_) async {
+      await _getWETHPrice();
+    });
   }
 
   @override
   void resetState() {
-
+    tokenModel = null;
+    _timer.cancel();
   }
 }

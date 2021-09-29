@@ -7,7 +7,7 @@ typedef TransferEvent = void Function(
     BigInt value);
 
 typedef TransferValue = void Function(
-    double? value);
+    BigInt? value);
 
 enum EventABIType {
   Transfer,

@@ -12,7 +12,7 @@ class ETHBundle {
   ETHBundle({this.ethPrice});
 
   factory ETHBundle.fromJson(Map<String, dynamic> json) => ETHBundle(
-      ethPrice: (json['ethPrice'] != null) ? json['ethPrice'] as String : null
+      ethPrice: (json['ethPriceUSD'] != null) ? json['ethPriceUSD'] as String : null
   );
 
   final String? ethPrice;
