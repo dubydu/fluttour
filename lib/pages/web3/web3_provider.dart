@@ -16,7 +16,6 @@ class Web3Provider extends ChangeNotifierSafety {
   late Timer _timer;
 
   /// WETH token
-  final String WETH = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
   double WETHCurrentPrice = 0;
 
   /// Token address
@@ -35,14 +34,7 @@ class Web3Provider extends ChangeNotifierSafety {
     ETHModel? ethModel = await tokenRequest.getETHPrice();
     if (ethModel != null) {
       double ethPrice = double.parse(ethModel.data?.ethPrice ?? '1');
-      TokenModel? tokenModel = await tokenRequest.getTokenInformation(
-          token: WETH);
-      if (tokenModel != null) {
-        double wETHPrice = double.parse(tokenModel.derivedETH ?? '1') *
-            ethPrice;
-        WETHCurrentPrice = wETHPrice;
-        print('WETHPrice:  $WETHCurrentPrice');
-      }
+      WETHCurrentPrice = ethPrice;
     }
   }
 
