@@ -45,7 +45,7 @@ class AppTheme {
   PageTransitionsTheme _buildPageTransitionsTheme() {
     return const PageTransitionsTheme(
       builders: <TargetPlatform, PageTransitionsBuilder>{
-        TargetPlatform.android: OpenUpwardsPageTransitionsBuilder(),
+        TargetPlatform.android: CupertinoPageTransitionsBuilder(),
         TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
       },
     );
