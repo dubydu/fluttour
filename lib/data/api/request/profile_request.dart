@@ -17,8 +17,8 @@ class ProfileRequest extends GraphQLAPIClient {
       handleException(result);
       return null;
     }
-    final Map<String, dynamic> data = result.data;
-    Map<String, dynamic> characterJSON = data["character"];
+    final Map<String, dynamic>? data = result.data;
+    Map<String, dynamic> characterJSON = data?["character"];
     CharacterModel character = CharacterModel.fromJson(characterJSON);
     return character;
   }
@@ -41,8 +41,8 @@ class ProfileRequest extends GraphQLAPIClient {
       handleException(result);
       return null;
     }
-    final Map<String, dynamic> data = result.data;
-    Map<String, dynamic> characterJSON = data["updateCharacter"];
+    final Map<String, dynamic>? data = result.data;
+    Map<String, dynamic> characterJSON = data?["updateCharacter"];
     CharacterModel character = CharacterModel.fromJson(characterJSON);
     return character;
   }

@@ -4,8 +4,8 @@ A minor Flutter base-source
 
 ### [Getting Started](#getting-started)
 
-* Flutter (Channel stable, 2.2.1)
-* Dart 2.13.1
+* Flutter (Channel stable, 2.10.4)
+* Dart 2.16.2
 
 ### [Articles](#articles)
 * https://itnext.io/flutter-x-graphql-a2dea05e6564
@@ -82,7 +82,7 @@ There is plenty of supported server and client [`libraries`](https://graphql.org
 
 ### [Pitfalls](#pitfalls)
 - Make sure `flutter pub get` before you run the app.
-### [Tube-con-to-niu...](#tube-con-to-niu...)
+### [WIP...](#wip)
 
 ---
 

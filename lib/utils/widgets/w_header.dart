@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-import 'package:fluttour/utils/other/dynamic_size.dart';
 import 'package:fluttour/app_define/app_assets.dart';
 import 'package:fluttour/app_define/app_color.dart';
 import 'package:fluttour/utils/extension/app_extension.dart';
@@ -11,7 +9,7 @@ mixin HeaderDelegate {
   void onBack();
 }
 
-class WHeader extends StatelessWidget with DynamicSize {
+class WHeader extends StatelessWidget {
   const WHeader({Key? key,
     this.title,
     this.bgColor,
@@ -30,7 +28,6 @@ class WHeader extends StatelessWidget with DynamicSize {
   @override
   Widget build(BuildContext context) {
     //Init dynamic size
-    initDynamicSize(context);
     return Material(
       child: Container(
         color: bgColor,

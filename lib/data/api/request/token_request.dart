@@ -17,8 +17,8 @@ class TokenRequest extends GraphQLAPIClient {
       handleException(result);
       return null;
     }
-    final Map<String, dynamic> data = result.data;
-    ETHModel ethModel = ETHModel.fromJson(data);
+    final Map<String, dynamic>? data = result.data;
+    ETHModel ethModel = ETHModel.fromJson(data ?? Map());
     return ethModel;
   }
 
@@ -39,7 +39,7 @@ class TokenRequest extends GraphQLAPIClient {
       handleException(result);
       return null;
     }
-    final tokenResult = result.data['token'] as Map<String, dynamic>;
+    final tokenResult = result.data?['token'] as Map<String, dynamic>;
     TokenModel tokenModel = TokenModel.fromJson(tokenResult);
     return tokenModel;
   }

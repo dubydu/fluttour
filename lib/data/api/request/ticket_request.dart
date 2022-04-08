@@ -16,7 +16,7 @@ class TicketRequest extends GraphQLAPIClient {
       handleException(result);
       return [];
     }
-    final Map<String, dynamic> data = result.data;
-    return (data["tickets"] as List<dynamic>).map((e) => TicketModel.fromJson(e as Map<String, dynamic>)).toList();
+    final Map<String, dynamic>? data = result.data;
+    return (data?["tickets"] as List<dynamic>).map((e) => TicketModel.fromJson(e as Map<String, dynamic>)).toList();
   }
 }

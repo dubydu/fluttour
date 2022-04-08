@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:fluttour/generated/l10n.dart';
 import 'package:fluttour/pages/signup/signup_delegate.dart';
 import 'package:fluttour/pages/signup/signup_provider.dart';
-import 'package:fluttour/utils/other/dynamic_size.dart';
 import 'package:fluttour/pages/base/p_material.dart';
 import 'package:fluttour/utils/extension/app_extension.dart';
 import 'package:fluttour/utils/extension/state_extension.dart';
+import 'package:fluttour/utils/other/dynamic_size.dart';
 import 'package:fluttour/utils/widgets/w_auth_textfield.dart';
 import 'package:avoid_keyboard/avoid_keyboard.dart';
 import 'package:fluttour/utils/widgets/w_header.dart';
@@ -19,7 +19,7 @@ class PSignUp extends StatefulWidget {
   _PSignUpState createState() => _PSignUpState();
 }
 
-class _PSignUpState extends State<PSignUp> with DynamicSize, SignUpDelegate {
+class _PSignUpState extends State<PSignUp> with SignUpDelegate, DynamicSize {
   /// Properties
   late SignupProvider _signupProvider;
   late TextEditingController _emailController;

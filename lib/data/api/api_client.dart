@@ -57,15 +57,15 @@ class GraphQLAPIClient {
 
   /// Handle exception
   void handleException(QueryResult queryResult) {
-    if (queryResult.exception.linkException is HttpLinkServerException) {
-      HttpLinkServerException httpLink = queryResult.exception.linkException as HttpLinkServerException;
+    if (queryResult.exception?.linkException is HttpLinkServerException) {
+      HttpLinkServerException httpLink = queryResult.exception?.linkException as HttpLinkServerException;
       if (httpLink.parsedResponse?.errors?.isNotEmpty == true) {
         print("::: GraphQL error message log: ${httpLink.parsedResponse?.errors?.first.message}");
       }
       return;
     }
-    if (queryResult.exception.linkException is NetworkException) {
-      NetworkException networkException = queryResult.exception.linkException as NetworkException;
+    if (queryResult.exception?.linkException is NetworkException) {
+      NetworkException networkException = queryResult.exception?.linkException as NetworkException;
       print("::: GraphQL error message log: ${networkException.message}");
       return;
     }

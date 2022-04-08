@@ -20,8 +20,8 @@ class SignupRequest extends GraphQLAPIClient {
       handleException(result);
       return null;
     }
-    final Map<String, dynamic> data = result.data;
-    Map<String, dynamic> characterJSON = data["createCharacter"];
+    final Map<String, dynamic>? data = result.data;
+    Map<String, dynamic> characterJSON = data?["createCharacter"];
     print('=======$characterJSON');
     CharacterModel character = CharacterModel.fromJson(characterJSON);
     return character;
