@@ -19,6 +19,7 @@ dependencies:
   web3dart: ^2.1.4
   http: ^0.13.3
   avoid_keyboard: ^0.3.0
+  flutter_bloc: ^8.0.1
 
 flutter_intl:
   enabled: true

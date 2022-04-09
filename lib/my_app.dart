@@ -1,4 +1,6 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttour/data/api/request/token_request.dart';
+import 'package:fluttour/pages/profile/profile_bloc.dart';
 import 'package:fluttour/pages/web3/web3_provider.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +14,6 @@ import 'package:fluttour/pages/collection_grid/collection_grid_provider.dart';
 import 'package:fluttour/pages/home/home_provider.dart';
 import 'package:fluttour/pages/layout_state/layout_state_provider.dart';
 import 'package:fluttour/pages/profile/edit_profile/edit_profile_provider.dart';
-import 'package:fluttour/pages/profile/profile_provider.dart';
 import 'package:fluttour/pages/signup/signup_provider.dart';
 import 'package:fluttour/pages/tickets/tickets_provider.dart';
 import 'package:fluttour/data/api/request/ticket_request.dart';
@@ -131,10 +132,9 @@ Future<void> myMain() async {
                 create: (BuildContext context) => TicketsProvider(
                     context.read<TicketRequest>()
                 )),
-            ChangeNotifierProvider<ProfileProvider>(
-                create: (BuildContext context) => ProfileProvider(
-                    context.read<ProfileRequest>()
-                )),
+            BlocProvider<ProfileBloc> (
+              create: (context) => ProfileBloc(profileRequest: ProfileRequest()),
+            ),
             ChangeNotifierProvider(
                 create: (BuildContext context) => EditProfileProvider(
                     context.read<BaseRequest>(),

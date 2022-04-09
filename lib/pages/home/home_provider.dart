@@ -1,4 +1,3 @@
-
 import 'package:fluttour/app_define/app_enum.dart';
 import 'package:fluttour/utils/other/notifier_safety.dart';
 
