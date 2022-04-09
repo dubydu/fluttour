@@ -3,9 +3,9 @@ import '../../domain/models/character_model.dart';
 
 abstract class ProfileState { }
 
-class ProfileFetchingState extends ProfileState { }
+class ProfileUninitializedState extends ProfileState { }
 
-class ProfileUninitializedState extends ProfileFetchingState { }
+class ProfileFetchingState extends ProfileState { }
 
 class ProfileFetchedState extends ProfileState {
   final CharacterModel? model;

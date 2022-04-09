@@ -1,4 +1,3 @@
-import 'package:fluttour/app_define/app_credential.dart';
 import 'package:fluttour/pages/collection_grid/p_collection_grid.dart';
 import 'package:fluttour/pages/home/p_home.dart';
 import 'package:flutter/material.dart';

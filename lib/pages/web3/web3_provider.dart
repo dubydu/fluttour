@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 import 'package:fluttour/data/api/contract_client.dart';
 import 'package:fluttour/data/api/request/token_request.dart';
 import 'package:fluttour/data/erc20/contract_locator.dart';
