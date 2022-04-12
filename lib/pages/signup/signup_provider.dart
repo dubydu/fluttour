@@ -9,7 +9,7 @@ class SignupProvider extends ChangeNotifierSafety {
 
   SignupProvider(this._baseRequest, this._signupRequest);
 
-  late BaseRequest _baseRequest;
+  late BaseGraphQLRequest _baseRequest;
   late SignupRequest _signupRequest;
 
   /// Delegate

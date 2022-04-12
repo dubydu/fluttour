@@ -2,8 +2,8 @@ import 'package:fluttour/pages/collection_grid/p_collection_grid.dart';
 import 'package:fluttour/pages/home/p_home.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttour/pages/layout_state/p_layout_state.dart';
-import 'package:fluttour/pages/profile/edit_profile/p_edit_profile.dart';
 import 'package:fluttour/pages/profile/p_profile.dart';
+import 'package:fluttour/pages/profile/profile_edit/p_profile_edit.dart';
 import 'package:fluttour/pages/signup/p_signup.dart';
 import 'package:fluttour/pages/tickets/p_tickets.dart';
 import 'package:fluttour/pages/web3/p_web3.dart';
@@ -65,7 +65,7 @@ class AppRoute {
       case routeEditProfile:
         return MaterialPageRoute<dynamic>(
           settings: settings,
-          builder: (_) => PEditProfile()
+          builder: (_) => PProfileEdit()
         );
       case routeSignup:
         return MaterialPageRoute<dynamic>(

@@ -6,8 +6,9 @@ import 'package:fluttour/app_define/app_credential.dart';
 import 'package:fluttour/app_define/app_enum.dart';
 import 'package:fluttour/app_define/app_style.dart';
 import 'package:fluttour/domain/models/character_model.dart';
-import 'package:fluttour/pages/profile/edit_profile/edit_profile_provider.dart';
 import 'package:fluttour/pages/profile/profile_bloc.dart';
+import 'package:fluttour/pages/profile/profile_edit/profile_edit_bloc.dart';
+import 'package:fluttour/pages/profile/profile_edit/profile_edit_event.dart';
 import 'package:fluttour/pages/profile/profile_event.dart';
 import 'package:fluttour/pages/profile/profile_state.dart';
 import 'package:fluttour/utils/extension/app_extension.dart';
@@ -27,7 +28,7 @@ class PProfile extends StatefulWidget {
 
 class _PProfileState extends State<PProfile> {
 
-  /// ProfileProvider
+  /// ProfileBloc
   late ProfileBloc _profileBloc;
 
   @override
@@ -109,7 +110,7 @@ class _PProfileState extends State<PProfile> {
                                                     child: InkWell(
                                                       child: Icon(Icons.navigate_next, size: 40.H, color: AppColors.darkBlue,),
                                                       onTap: () async {
-                                                        context.read<EditProfileProvider>().characterModel = data;
+                                                        BlocProvider.of<ProfileEditBloc>(context, listen: false).add(ProfileEditInitializedEvent(characterModel: data));
                                                         context.navigator()?.pushNamed(AppRoute.routeEditProfile).then((_) async {
                                                           await this._fetchProfileData();
                                                         });

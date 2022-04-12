@@ -1,6 +1,6 @@
 import 'package:fluttour/data/api/api_client.dart';
 
-class BaseRequest extends GraphQLAPIClient {
+class BaseGraphQLRequest extends GraphQLAPIClient {
   /// Move character object from Draft to Publish stage
   Future<bool> publishCharacter({required String id}) async {
     /// Query

@@ -9,11 +9,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   late ProfileRequest profileRequest;
 
   ProfileBloc({required this.profileRequest}) : super(ProfileUninitializedState()) {
-    profileRequest = ProfileRequest();
-    on<ProfileEvent>(_mapSignInWithGoogleToState);
+    on<ProfileEvent>(_mapEventToState);
   }
 
-  Future<void> _mapSignInWithGoogleToState(
+  Future<void> _mapEventToState(
       ProfileEvent event,
       Emitter<ProfileState> emit)
   async {
