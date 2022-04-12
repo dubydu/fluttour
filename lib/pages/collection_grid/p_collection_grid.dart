@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:fluttour/domain/models/collection_model.dart';
 import 'package:fluttour/pages/collection_grid/collection_grid_provider.dart';
 import 'package:fluttour/pages/collection_grid/w_collection_item.dart';

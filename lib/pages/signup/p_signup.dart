@@ -12,7 +12,6 @@ import 'package:fluttour/utils/widgets/w_header.dart';
 import 'package:fluttour/utils/widgets/w_primary_button.dart';
 import 'package:provider/provider.dart';
 import 'package:fluttour/app_define/app_route.dart';
-import 'package:flutter/cupertino.dart';
 
 class PSignUp extends StatefulWidget {
   @override

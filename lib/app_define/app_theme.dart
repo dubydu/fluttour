@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttour/app_define/app_assets.dart';
 import 'package:provider/provider.dart';
