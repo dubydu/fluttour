@@ -39,16 +39,16 @@ class _PProfileEditState extends State<PProfileEdit> with HeaderDelegate {
     context.navigator()?.pop();
   }
 
-  Future<void> _textFieldsLatestValue() async {
+  _textFieldsDidChangeEvent() {
     final String? email = _emailController.text;
     final String? name = _characterController.text;
-    BlocProvider.of<ProfileEditBloc>(context).add(ProfileEditingEvent(email: email, name: name));
+    _profileEditBloc.add(ProfileEditingEvent(email: email, name: name));
   }
 
-  Future<void> _saveProfile() async {
+  _saveProfileEvent() {
     final String? email = _emailController.text;
     final String? name = _characterController.text;
-    BlocProvider.of<ProfileEditBloc>(context).add(ProfileSaveEvent(email: email, name: name));
+    _profileEditBloc.add(ProfileSaveEvent(email: email, name: name));
   }
 
   @override
@@ -83,7 +83,7 @@ class _PProfileEditState extends State<PProfileEdit> with HeaderDelegate {
                                           obscureText: false,
                                           isSecurityTextField: false,
                                           onChange: (text) async {
-                                            await _textFieldsLatestValue();
+                                            await _textFieldsDidChangeEvent();
                                           }),
                                       SizedBox(height: 10.H),
                                       WAuthTextField(
@@ -92,7 +92,7 @@ class _PProfileEditState extends State<PProfileEdit> with HeaderDelegate {
                                           obscureText: false,
                                           isSecurityTextField: false,
                                           onChange: (text) async {
-                                            await _textFieldsLatestValue();
+                                            await _textFieldsDidChangeEvent();
                                           }),
                                       SizedBox(height: 20.H),
                                     ],
@@ -118,7 +118,7 @@ class _PProfileEditState extends State<PProfileEdit> with HeaderDelegate {
                                     child: WPrimaryButton(
                                       title: "Save",
                                       onPress: () async {
-                                        await _saveProfile();
+                                        await _saveProfileEvent();
                                       },
                                       isSelected: isValidate[0],
                                       isLoading: isValidate[1],

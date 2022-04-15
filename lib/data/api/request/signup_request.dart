@@ -1,7 +1,7 @@
 import 'package:fluttour/data/api/api_client.dart';
 import 'package:fluttour/domain/models/character_model.dart';
 
-class SignupRequest extends GraphQLAPIClient {
+class SignUpRequest extends GraphQLAPIClient {
   Future<CharacterModel?> signup(CharacterModel request) async {
     /// Query
     String mutationCharacter = """

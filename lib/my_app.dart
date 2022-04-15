@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttour/data/api/request/token_request.dart';
 import 'package:fluttour/pages/profile/profile_bloc.dart';
 import 'package:fluttour/pages/profile/profile_edit/profile_edit_bloc.dart';
+import 'package:fluttour/pages/signup/signup_bloc.dart';
 import 'package:fluttour/pages/tickets/tickets_bloc.dart';
 import 'package:fluttour/pages/web3/web3_provider.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -13,7 +14,6 @@ import 'package:fluttour/data/api/request/profile_request.dart';
 import 'package:fluttour/data/api/request/signup_request.dart';
 import 'package:fluttour/generated/l10n.dart';
 import 'package:fluttour/pages/home/home_provider.dart';
-import 'package:fluttour/pages/signup/signup_provider.dart';
 import 'package:fluttour/data/api/request/ticket_request.dart';
 import 'package:fluttour/data/api/locale_provider.dart';
 import 'package:fluttour/app_define/app_route.dart';
@@ -97,7 +97,7 @@ Future<void> myMain() async {
                 create: (_) => TicketRequest()
             ),
             Provider(
-                create: (_) => SignupRequest()
+                create: (_) => SignUpRequest()
             ),
             Provider(
                 create: (_) => ProfileRequest()
@@ -114,19 +114,21 @@ Future<void> myMain() async {
             ChangeNotifierProvider<HomeProvider>(
                 create: (_) => HomeProvider()
             ),
-            ChangeNotifierProvider<SignupProvider>(
-                create: (BuildContext context) => SignupProvider(
-                    context.read<BaseGraphQLRequest>(),
-                    context.read<SignupRequest>(),
-                )),
+            BlocProvider<SignUpBloc>(
+                create: (BuildContext context) => SignUpBloc(
+                    baseRequest: BaseGraphQLRequest(),
+                    signUpRequest: SignUpRequest()
+                )
+            ),
             BlocProvider<TicketsBloc>(
-                create: (context) => TicketsBloc(ticketRequest: TicketRequest()
+                create: (context) => TicketsBloc(
+                    ticketRequest: TicketRequest()
                 )
             ),
             BlocProvider<ProfileBloc> (
-              create: (context) => ProfileBloc(
-                  profileRequest: ProfileRequest()
-              ),
+                create: (context) => ProfileBloc(
+                    profileRequest: ProfileRequest()
+                )
             ),
             BlocProvider<ProfileEditBloc>(
                 create: (context) => ProfileEditBloc(
@@ -138,10 +140,11 @@ Future<void> myMain() async {
                 create: (BuildContext context) => Web3Provider(
                     context.read<ContractLocator>(),
                     context.read<TokenRequest>()
-                )),
+                )
+            ),
             ChangeNotifierProvider<LocaleProvider>(
                 create: (_) => LocaleProvider()
-            ),
+            )
           ],
           child: MyApp(isAppAuthenticated: (userToken != null)))
   );
