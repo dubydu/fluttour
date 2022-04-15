@@ -10,8 +10,8 @@ class ProfileEditInitializedState extends ProfileEditState {
 }
 
 class ProfileEditingState extends ProfileEditState {
-  final bool? isValidate;
-  final bool? isLoading;
+  bool isValidate = false;
+  bool isLoading = false;
   ProfileEditingState({required this.isValidate, required this.isLoading});
 }
 

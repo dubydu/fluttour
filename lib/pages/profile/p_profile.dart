@@ -99,25 +99,7 @@ class _PProfileState extends State<PProfile> {
                                                   )
                                                 ],
                                               ),
-                                              Positioned(
-                                                  top: 0,
-                                                  right: 0,
-                                                  bottom: 0,
-                                                  child: Container(
-                                                    alignment: Alignment.centerRight,
-                                                    height: 40.H,
-                                                    width: 40.H,
-                                                    child: InkWell(
-                                                      child: Icon(Icons.navigate_next, size: 40.H, color: AppColors.darkBlue,),
-                                                      onTap: () async {
-                                                        BlocProvider.of<ProfileEditBloc>(context, listen: false).add(ProfileEditInitializedEvent(characterModel: data));
-                                                        context.navigator()?.pushNamed(AppRoute.routeEditProfile).then((_) async {
-                                                          await this._fetchProfileData();
-                                                        });
-                                                      },
-                                                    ),
-                                                  )
-                                              )
+                                              _buildEditProfileButtonWidget(context, data)
                                             ],
                                           ),
                                         )
@@ -125,26 +107,7 @@ class _PProfileState extends State<PProfile> {
                                   )
                                 ],
                               ),
-                              Positioned(
-                                  left: 20.SP,
-                                  right: 20.SP,
-                                  bottom: MediaQuery.of(context).padding.bottom + 20.SP,
-                                  child: Container(
-                                    height: 50.H,
-                                    child: WPrimaryButton(
-                                      title: "Clear Token",
-                                      onPress: () async {
-                                        return showConfirmDialog(() async {
-                                          context.navigator()?.pop();
-                                          await Credential.singleton.clearToken();
-                                          context.navigator()?.pushNamedAndRemoveUntil(AppRoute.routeSignup, (route) => false);
-                                        }, 'Are you sure you want to delete the token?');
-                                      },
-                                      isSelected: true,
-                                      isLoading: false,
-                                    ),
-                                  )
-                              )
+                              _buildClearProfileButtonWidget(context)
                             ],
                           ),
                         )
@@ -158,6 +121,51 @@ class _PProfileState extends State<PProfile> {
           },
         )
       )
+    );
+  }
+
+  Widget _buildEditProfileButtonWidget(BuildContext context, CharacterModel? data) {
+    return Positioned(
+        top: 0,
+        right: 0,
+        bottom: 0,
+        child: Container(
+          alignment: Alignment.centerRight,
+          height: 40.H,
+          width: 40.H,
+          child: InkWell(
+            child: Icon(Icons.navigate_next, size: 40.H, color: AppColors.darkBlue,),
+            onTap: () async {
+              BlocProvider.of<ProfileEditBloc>(context, listen: false).add(ProfileEditInitializedEvent(characterModel: data));
+              context.navigator()?.pushNamed(AppRoute.routeEditProfile).then((_) async {
+                await this._fetchProfileData();
+              });
+            },
+          ),
+        )
+    );
+  }
+
+  Widget _buildClearProfileButtonWidget(BuildContext context) {
+    return Positioned(
+        left: 20.SP,
+        right: 20.SP,
+        bottom: MediaQuery.of(context).padding.bottom + 20.SP,
+        child: Container(
+          height: 50.H,
+          child: WPrimaryButton(
+            title: "Clear Token",
+            onPress: () async {
+              return showConfirmDialog(() async {
+                context.navigator()?.pop();
+                await Credential.singleton.clearToken();
+                context.navigator()?.pushNamedAndRemoveUntil(AppRoute.routeSignup, (route) => false);
+              }, 'Are you sure you want to delete the token?');
+            },
+            isSelected: true,
+            isLoading: false,
+          ),
+        )
     );
   }
 

@@ -35,7 +35,6 @@ class _PProfileEditState extends State<PProfileEdit> with HeaderDelegate {
 
   @override
   void onBack() {
-    // _editProfileProvider.resetState();
     context.navigator()?.pop();
   }
 
@@ -101,37 +100,44 @@ class _PProfileEditState extends State<PProfileEdit> with HeaderDelegate {
                               }
                               return Container();
                         }),
-                        BlocSelector<ProfileEditBloc, ProfileEditState, List<bool>>
-                          (selector: (state) {
-                            if (state is ProfileEditingState) {
-                                return [state.isValidate ?? false, state.isLoading ?? false];
-                            }
-                            return [false, false];
-                          }, builder: (context, isValidate) {
-                              return
-                                Positioned(
-                                  left: 20.SP,
-                                  right: 20.SP,
-                                  bottom: MediaQuery.of(context).padding.bottom + 20.SP,
-                                  child: Container(
-                                    height: 50.H,
-                                    child: WPrimaryButton(
-                                      title: "Save",
-                                      onPress: () async {
-                                        await _saveProfileEvent();
-                                      },
-                                      isSelected: isValidate[0],
-                                      isLoading: isValidate[1],
-                                    ),
-                                  )
-                              );
-                          })
+                        _buildSaveButtonWidget(context)
                       ],
                     ),
                   ),
               )
           ]))
       ),
+    );
+  }
+
+  Widget _buildSaveButtonWidget(BuildContext context) {
+    return BlocBuilder<ProfileEditBloc, ProfileEditState>(
+        buildWhen: (_, state) {
+          return state is ProfileEditingState;
+        }, builder: (context, state) {
+          List<bool> isValidate() {
+            if (state is ProfileEditingState) {
+              return [state.isValidate, state.isLoading];
+            }
+            return [false, false];
+          }
+          return Positioned(
+            left: 20.SP,
+            right: 20.SP,
+            bottom: MediaQuery.of(context).padding.bottom + 20.SP,
+            child: Container(
+              height: 50.H,
+              child: WPrimaryButton(
+                title: "Save",
+                onPress: () async {
+                  await _saveProfileEvent();
+                },
+                isSelected: isValidate()[0],
+                isLoading: isValidate()[1],
+              ),
+            )
+        );
+      }
     );
   }
 }

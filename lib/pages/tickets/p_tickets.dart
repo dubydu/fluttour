@@ -37,10 +37,6 @@ class _PTicketsState extends State<PTickets> {
     _ticketsBloc.add(TicketsLoadingMoreEvent());
   }
 
-  _loadedMoreEvent() {
-    _ticketsBloc.add(TicketsLoadedMoreEvent());
-  }
-
   @override
   Widget build(BuildContext context) {
     return PMaterial(
