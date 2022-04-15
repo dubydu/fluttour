@@ -12,7 +12,7 @@ A minor Flutter base-source
 * https://dubydu.medium.com/web3dart-and-ethereum-blockchain-850aba77e692
 
 ### [Main Packages](#main-packages)
-* [Provider](https://pub.dev/packages/provider): An app state management.
+* [Provider](https://pub.dev/packages/provider) & [BLoC](https://pub.dev/packages/flutter_bloc): State management package.
 * [graphql_flutter](https://pub.dev/packages/graphql_flutter): A GraphQL client for Flutter.
 * [web3dart](https://github.com/simolus3/web3dart): Connect to interact with the Ethereum blockchain.
 
@@ -24,7 +24,8 @@ A minor Flutter base-source
 
 #### Common steps to add a new page
 * Create a new `A_widget`.
-* Create a new `A_Provider` class that `extends` from `ChangeNotifierSafety`.
+* If you want to use Provider. Then create a new `A_provider` class that `extends` from `ChangeNotifierSafety` abstract class .
+* Otherwise, if you want to use BLoC. Then create a new `A_bloc` class that `extends` from `Bloc` abstract class.
 * Define the `A_widget's route` in [`app_route.dart`](https://github.com/dubydu/fluttour/blob/master/lib/app_define/app_route.dart).
 * Exposing a new A_Provider object in [`myMain()`](https://github.com/dubydu/fluttour/blob/master/lib/my_app.dart) function.
 
