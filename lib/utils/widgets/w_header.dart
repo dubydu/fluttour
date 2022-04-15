@@ -57,6 +57,7 @@ class WHeader extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         SizedBox(width: 17.W,),
+                        (isShowBackButton == true) ?
                         Container(
                           width: 28.W,
                           height: 18.H,
@@ -68,9 +69,9 @@ class WHeader extends StatelessWidget {
                                 context.navigator()?.pop();
                               }
                             },
-                            child: (isShowBackButton == true) ? Image.asset(AppAssets.origin().icBack) : Container(),
+                            child: Image.asset(AppAssets.origin().icBack),
                           ),
-                        )
+                        ) : Container()
                       ],
                     ),
                   )

@@ -107,25 +107,25 @@ class _PProfileEditState extends State<PProfileEdit> with HeaderDelegate {
                                 return [state.isValidate ?? false, state.isLoading ?? false];
                             }
                             return [false, false];
-                        }, builder: (context, isValidate) {
-                            return
-                              Positioned(
-                                left: 20.SP,
-                                right: 20.SP,
-                                bottom: MediaQuery.of(context).padding.bottom + 20.SP,
-                                child: Container(
-                                  height: 50.H,
-                                  child: WPrimaryButton(
-                                    title: "Save",
-                                    onPress: () async {
-                                      await _saveProfile();
-                                    },
-                                    isSelected: isValidate[0],
-                                    isLoading: isValidate[1],
-                                  ),
-                                )
-                            );
-                        })
+                          }, builder: (context, isValidate) {
+                              return
+                                Positioned(
+                                  left: 20.SP,
+                                  right: 20.SP,
+                                  bottom: MediaQuery.of(context).padding.bottom + 20.SP,
+                                  child: Container(
+                                    height: 50.H,
+                                    child: WPrimaryButton(
+                                      title: "Save",
+                                      onPress: () async {
+                                        await _saveProfile();
+                                      },
+                                      isSelected: isValidate[0],
+                                      isLoading: isValidate[1],
+                                    ),
+                                  )
+                              );
+                          })
                       ],
                     ),
                   ),

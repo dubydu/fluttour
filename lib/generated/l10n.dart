@@ -179,6 +179,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Ticket is empty`
+  String get ticket_empty {
+    return Intl.message(
+      'Ticket is empty',
+      name: 'ticket_empty',
+      desc: 'Ticket is empty',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

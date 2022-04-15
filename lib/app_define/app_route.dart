@@ -1,7 +1,5 @@
-import 'package:fluttour/pages/collection_grid/p_collection_grid.dart';
 import 'package:fluttour/pages/home/p_home.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttour/pages/layout_state/p_layout_state.dart';
 import 'package:fluttour/pages/profile/p_profile.dart';
 import 'package:fluttour/pages/profile/profile_edit/p_profile_edit.dart';
 import 'package:fluttour/pages/signup/p_signup.dart';
@@ -22,8 +20,6 @@ class AppRoute {
   /// -----------------
   static const String routeHome = '/home';
   static const String routeSignup = '/sign_up';
-  static const String routeLayoutState = '/layout_state';
-  static const String routeCollectionGrid = '/collection_grid';
   static const String routeFetchData = '/fetch_data';
   static const String routeDataMutations = '/data_mutations';
   static const String routeEditProfile = '/edit_profile';
@@ -42,16 +38,6 @@ class AppRoute {
   /// Generate route for app here
   Route<dynamic>? generateRoute(RouteSettings settings) {
     switch(settings.name) {
-      case routeLayoutState:
-        return MaterialPageRoute<dynamic>(
-          settings: settings,
-          builder: (_) => PLayoutState()
-        );
-      case routeCollectionGrid:
-        return MaterialPageRoute<dynamic>(
-          settings: settings,
-          builder: (_) => PCollectionGrid()
-        );
       case routeFetchData:
         return MaterialPageRoute<dynamic>(
           settings: settings,

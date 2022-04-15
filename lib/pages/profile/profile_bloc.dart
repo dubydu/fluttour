@@ -16,9 +16,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       ProfileEvent event,
       Emitter<ProfileState> emit)
   async {
-    emit(ProfileFetchingState());
     try {
-      if (event is ProfileFetchedEvent) {
+      if (event is ProfileFetchingEvent) {
         String? id = await Credential.singleton.getToken();
         if (id != null) {
           CharacterModel? result = await profileRequest.getProfile(id: id);

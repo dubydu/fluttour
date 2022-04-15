@@ -1,3 +1,3 @@
 abstract class ProfileEvent { }
 
-class ProfileFetchedEvent extends ProfileEvent { }
+class ProfileFetchingEvent extends ProfileEvent { }

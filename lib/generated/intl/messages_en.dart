@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_more_data": MessageLookupByLibrary.simpleMessage("No more data"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "signup": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "ticket_empty": MessageLookupByLibrary.simpleMessage("Ticket is empty"),
         "token_information":
             MessageLookupByLibrary.simpleMessage("Token information")
       };

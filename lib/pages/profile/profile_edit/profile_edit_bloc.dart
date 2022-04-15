@@ -19,8 +19,6 @@ class ProfileEditBloc extends Bloc<ProfileEditEvent, ProfileEditState> {
       ProfileEditEvent event,
       Emitter<ProfileEditState> emit)
   async {
-    emit(ProfileEditUninitializedState());
-
     try {
       /// ProfileEditingEvent
       if (event is ProfileEditingEvent) {

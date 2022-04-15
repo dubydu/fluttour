@@ -41,7 +41,7 @@ class _PProfileState extends State<PProfile> {
   }
 
   _fetchProfileData() async {
-    _profileBloc.add(ProfileFetchedEvent());
+    _profileBloc.add(ProfileFetchingEvent());
   }
 
   @override

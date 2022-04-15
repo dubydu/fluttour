@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttour/data/api/request/token_request.dart';
 import 'package:fluttour/pages/profile/profile_bloc.dart';
 import 'package:fluttour/pages/profile/profile_edit/profile_edit_bloc.dart';
+import 'package:fluttour/pages/tickets/tickets_bloc.dart';
 import 'package:fluttour/pages/web3/web3_provider.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:flutter/services.dart';
@@ -11,11 +12,8 @@ import 'package:fluttour/data/api/request/base_request.dart';
 import 'package:fluttour/data/api/request/profile_request.dart';
 import 'package:fluttour/data/api/request/signup_request.dart';
 import 'package:fluttour/generated/l10n.dart';
-import 'package:fluttour/pages/collection_grid/collection_grid_provider.dart';
 import 'package:fluttour/pages/home/home_provider.dart';
-import 'package:fluttour/pages/layout_state/layout_state_provider.dart';
 import 'package:fluttour/pages/signup/signup_provider.dart';
-import 'package:fluttour/pages/tickets/tickets_provider.dart';
 import 'package:fluttour/data/api/request/ticket_request.dart';
 import 'package:fluttour/data/api/locale_provider.dart';
 import 'package:fluttour/app_define/app_route.dart';
@@ -121,16 +119,10 @@ Future<void> myMain() async {
                     context.read<BaseGraphQLRequest>(),
                     context.read<SignupRequest>(),
                 )),
-            ChangeNotifierProvider<LayoutStateProvider>(
-                create: (_) => LayoutStateProvider()
+            BlocProvider<TicketsBloc>(
+                create: (context) => TicketsBloc(ticketRequest: TicketRequest()
+                )
             ),
-            ChangeNotifierProvider<CollectionGridProvider>(
-                create: (_) => CollectionGridProvider()
-            ),
-            ChangeNotifierProvider<TicketsProvider>(
-                create: (BuildContext context) => TicketsProvider(
-                    context.read<TicketRequest>()
-                )),
             BlocProvider<ProfileBloc> (
               create: (context) => ProfileBloc(
                   profileRequest: ProfileRequest()

@@ -76,5 +76,11 @@
     "description": "Token information",
     "type": "text",
     "placeholders": {}
+  },
+  "ticket_empty": "Ticket is empty",
+  "@ticket_empty": {
+    "description": "Ticket is empty",
+    "type": "text",
+    "placeholders": {}
   }
 }
