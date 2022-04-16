@@ -103,7 +103,7 @@ class _PTicketsState extends State<PTickets> {
                         );
                       }),
                   Container(
-                      margin: EdgeInsets.only(bottom: 20.H),
+                      margin: EdgeInsets.only(bottom: noMoreData ? 30.H : 200.H),
                       child: noMoreData ? Container(child: Text(S.of(context).no_more_data))
                           : loadingMore ? CupertinoActivityIndicator(radius: 8.SP) : null),
                 ],
@@ -112,7 +112,7 @@ class _PTicketsState extends State<PTickets> {
           ),
           onNotification: (ScrollNotification scroll) {
             if (scroll.metrics.pixels >
-                scroll.metrics.maxScrollExtent && !loadingMore && !noMoreData) {
+                (scroll.metrics.maxScrollExtent - 200.H) && !loadingMore && !noMoreData) {
               Future.delayed(const Duration(milliseconds: 100), () async {
                 _loadingMoreEvent();
               });

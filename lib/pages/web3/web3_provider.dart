@@ -17,8 +17,8 @@ class Web3Provider extends ChangeNotifierSafety {
   /// WETH token
   double WETHCurrentPrice = 0;
 
-  /// Token address
-  final String tokenAddress = '0x990f341946a3fdb507ae7e52d17851b87168017c';
+  /// E.g. AXS Token Address (Ether)
+  final String tokenAddress = '0xbb0e17ef65f82ab018d8edd776e8dd940327b28b';
 
   TokenModel? _tokenModel;
 
@@ -37,7 +37,7 @@ class Web3Provider extends ChangeNotifierSafety {
     }
   }
 
-  Future<TokenModel?> getTokenInfo() async {
+  Future<void> getTokenInfo() async {
     tokenModel = await tokenRequest.getTokenInformation(token: tokenAddress);
   }
 

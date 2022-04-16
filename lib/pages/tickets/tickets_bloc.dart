@@ -57,12 +57,14 @@ class TicketsBloc extends Bloc<TicketsEvent, TicketsState> {
           _tickets?.addAll(result);
           _seekBackwardsCount += 7;
         }
-        emit(TicketsFetchedState(
-            ticketModel: _tickets,
-            isLoading: false,
-            noMoreData: _isNoMoreData
-        ));
-        _isLoadingMore = false;
+        await Future.delayed(const Duration(milliseconds: 200), () async {
+          emit(TicketsFetchedState(
+              ticketModel: _tickets,
+              isLoading: false,
+              noMoreData: _isNoMoreData
+          ));
+          _isLoadingMore = false;
+        });
       }
     } catch (e) {
       emit(TicketsErrorState());

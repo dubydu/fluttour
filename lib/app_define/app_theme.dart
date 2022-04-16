@@ -32,7 +32,9 @@ class AppTheme {
   ThemeData buildThemeData() {
     return ThemeData(
       primaryColor: primaryColor,
-      accentColor: accentColor,
+      colorScheme: ColorScheme.fromSwatch().copyWith(
+        secondary: accentColor,
+      ),
       fontFamily: assets.fontRoboto,
       pageTransitionsTheme: _buildPageTransitionsTheme(),
       buttonTheme: _buildButtonTheme(),
