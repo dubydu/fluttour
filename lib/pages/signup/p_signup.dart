@@ -197,16 +197,9 @@ class _PSignUpState extends State<PSignUp> with SignUpDelegate, DynamicSize {
   Widget _listenSignUpState() {
     return BlocListener<SignUpBloc, SignUpState> (
       listenWhen: (_, state) {
-        return (state is SignUpSuccessState
-            || state is SignUpErrorState);
+        return (state is );
       },
-      listener: (context, state) async {
-        if (state is SignUpSuccessState) {
-          context.navigator()?.pushNamedAndRemoveUntil(AppRoute.routeHome, (route) => false);
-        } else if (state is SignUpErrorState) {
-          await showErrorDialog('<${S.of(context).flut_tour}>', state.mgs);
-        }
-      },
+      listener: (context, state) async { },
       child: Container(),
     );
   }

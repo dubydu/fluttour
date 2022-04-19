@@ -1,3 +1,5 @@
+import 'package:fluttour/app_define/app_route.dart';
+
 enum CredentialKey {
   token
 }
@@ -20,7 +22,7 @@ enum Tutorial {
 }
 
 extension TutorialExtension on Tutorial {
-  String getName() {
+  String title() {
     switch (this) {
       case Tutorial.pagination:
         return 'Pagination';
@@ -28,6 +30,19 @@ extension TutorialExtension on Tutorial {
         return 'Mutations';
       case Tutorial.web3:
         return 'Web3';
+      default:
+        return '';
+    }
+  }
+
+  String router() {
+    switch (this) {
+      case Tutorial.pagination:
+        return AppRoute.routeFetchData;
+      case Tutorial.mutations:
+        return AppRoute.routeDataMutations;
+      case Tutorial.web3:
+        return AppRoute.routeWeb3;
       default:
         return '';
     }

@@ -61,7 +61,7 @@ class _PProfileState extends State<PProfile> {
                   color: Colors.white,
                   child: Column (
                     children: <Widget>[
-                      WHeader(title: Tutorial.mutations.getName(), isShowBackButton: true),
+                      WHeader(title: Tutorial.mutations.title(), isShowBackButton: true),
                       if (data == null)
                         Container(padding: EdgeInsets.only(top: 150.H),
                             child: CupertinoActivityIndicator(radius: 16.SP))

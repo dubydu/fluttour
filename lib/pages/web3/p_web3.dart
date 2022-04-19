@@ -46,7 +46,7 @@ class _Web3PageState extends State<Web3Page> implements HeaderDelegate {
               color: Colors.white,
               child: Column(
                 children: <Widget>[
-                  WHeader(title: Tutorial.web3.getName(),
+                  WHeader(title: Tutorial.web3.title(),
                       isShowBackButton: true, delegate: this,),
                   Container(
                     padding: EdgeInsets.only(top: 100.H),

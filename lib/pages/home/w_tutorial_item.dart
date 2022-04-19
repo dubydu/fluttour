@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:fluttour/app_define/app_color.dart';
 import 'package:fluttour/app_define/app_enum.dart';
@@ -23,9 +22,10 @@ class WTutorialItem extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-          Flexible(child: Text(tutorial.getName(), style: boldTextStyle(20.SP, color: AppColors.black))),
-          Icon(Icons.arrow_right, color: Colors.black, size: 30.SP),
-        ]),
+            Flexible(child: Text(tutorial.title(), style: boldTextStyle(20.SP, color: AppColors.black))),
+            Icon(Icons.arrow_right, color: Colors.black, size: 30.SP),
+          ]
+        ),
       )
     );
   }

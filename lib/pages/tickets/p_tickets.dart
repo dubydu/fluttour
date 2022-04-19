@@ -44,7 +44,7 @@ class _PTicketsState extends State<PTickets> {
           color: Colors.white,
           child: Column(
             children: <Widget>[
-              WHeader(title: Tutorial.pagination.getName(),
+              WHeader(title: Tutorial.pagination.title(),
                   isShowBackButton: true),
               BlocBuilder<TicketsBloc, TicketsState>(
                 buildWhen: (_, state) {

@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with HeaderDelegate, DynamicSize {
+class _HomePageState extends State<HomePage> with DynamicSize {
 
   late HomeProvider _homeProvider;
 
@@ -27,7 +27,6 @@ class _HomePageState extends State<HomePage> with HeaderDelegate, DynamicSize {
     WidgetsBinding.instance?.addPostFrameCallback((_) async {
       _homeProvider = Provider.of<HomeProvider>(context, listen: false);
       _homeProvider.setupData();
-
       // await Credential().saveToken('DEMO_TOKEN_3');
     });
   }
@@ -47,23 +46,7 @@ class _HomePageState extends State<HomePage> with HeaderDelegate, DynamicSize {
                 child: Selector<HomeProvider, List<Tutorial>>(
                   selector: (_, HomeProvider provider) => provider.listTutorial,
                   builder: (_, List<Tutorial> data, __) {
-                    return ListView.builder(
-                      itemCount:  data.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return WTutorialItem(tutorial: data[index], onPressItem: () {
-                          switch (Tutorial.values[index]) {
-                            case Tutorial.web3:
-                              return context.navigator()?.pushNamed(AppRoute.routeWeb3);
-                            case Tutorial.pagination:
-                              return context.navigator()?.pushNamed(AppRoute.routeFetchData);
-                            case Tutorial.mutations:
-                              return context.navigator()?.pushNamed(AppRoute.routeDataMutations);
-                            default:
-                              return null;
-                          }
-                        },);
-                      }
-                    );
+                    return _buildListView(data);
                   }
                 ),
               ),
@@ -74,8 +57,14 @@ class _HomePageState extends State<HomePage> with HeaderDelegate, DynamicSize {
     );
   }
 
-  @override
-  void onBack() {
-    // TODO: implement onBack
+  Widget _buildListView(List<Tutorial> data) {
+    return ListView.builder(
+        itemCount:  data.length,
+        itemBuilder: (BuildContext context, int index) {
+          return WTutorialItem(tutorial: data[index], onPressItem: () {
+            return context.navigator()?.pushNamed(Tutorial.values[index].router());
+          });
+        }
+    );
   }
 }

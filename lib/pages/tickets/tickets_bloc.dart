@@ -71,6 +71,17 @@ class TicketsBloc extends Bloc<TicketsEvent, TicketsState> {
     }
   }
 
+  @override
+  void onTransition(Transition<TicketsEvent, TicketsState> transition) {
+    super.onTransition(transition);
+  }
+
+  @override
+  void onEvent(TicketsEvent event) {
+    /// logging / analytics
+    super.onEvent(event);
+  }
+
   void resetState() {
     _seekBackwardsCount = 0;
     _isLoadingMore = false;
